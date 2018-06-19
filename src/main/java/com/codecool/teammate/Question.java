@@ -3,6 +3,7 @@ package com.codecool.teammate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,20 +14,21 @@ public class Question {
     @GeneratedValue
     private int id;
     private String title;
-    private Topic topic;
+    @ManyToMany
+    private List<Topic> topics = new ArrayList<>();
     private Answer answer;
     private Date date;
     private Customer customer;
 
-    public Question(String title, Topic topic) {
+    public Question(String title, List<Topic> topics) {
         this.title = title;
-        this.topic = topic;
+        this.topics = topics;
         this.date = new Date();
     }
 
-    public Question(String title, Topic topic, Customer customer) {
+    public Question(String title, List<Topic> topics, Customer customer) {
         this.title = title;
-        this.topic = topic;
+        this.topics = topics;
         this.customer = customer;
         this.date = new Date();
     }
@@ -47,12 +49,12 @@ public class Question {
         this.title = title;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public List<Topic> getTopics() {
+        return topics;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
     }
 
     public Answer getAnswer() {
@@ -84,7 +86,7 @@ public class Question {
         return "Question{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", topic=" + topic +
+                ", topics=" + topics +
                 ", answer=" + answer +
                 ", date=" + date +
                 ", customer=" + customer +
