@@ -11,4 +11,17 @@ public class Question {
     private Answer answer;
     private Date date;
     private Customer customer;
+
+    public Question(String title, List<Topic> topics) {
+        this.title = title;
+        this.topics = topics;
+        this.date = new Date();
+    }
+
+    public Question(String title, List<Topic> topics, Customer customer) {
+        this.title = title;
+        this.topics = topics;
+        this.customer = customer;
+        this.date = new Date();
+    }
 }
