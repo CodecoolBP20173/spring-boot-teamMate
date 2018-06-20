@@ -24,8 +24,8 @@
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/teammateDB"/>
-            <property name="javax.persistence.jdbc.user" value="dorasurmann"/>
-            <property name="javax.persistence.jdbc.password" value="Kakukk18"/>
+            <property name="javax.persistence.jdbc.user" value="marta"/>
+            <property name="javax.persistence.jdbc.password" value="Kochanie1"/>
             <!--<property name="javax.persistence.sql-load-script-source" value="insert.sql"/>-->
         </properties>
     </persistence-unit>
