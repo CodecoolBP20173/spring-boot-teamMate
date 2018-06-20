@@ -1,9 +1,6 @@
 package com.codecool.teammate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Vote {
@@ -14,6 +11,7 @@ public class Vote {
     private Answer answer;
     @OneToOne
     private Customer customer;
+
     private VoteType voteType;
 
     public Vote() {
@@ -45,6 +43,7 @@ public class Vote {
         this.customer = customer;
     }
 
+    @Enumerated(EnumType.STRING)
     public VoteType getVoteType() {
         return voteType;
     }
