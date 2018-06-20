@@ -77,6 +77,10 @@ public class Question {
         this.topics = topics;
     }
 
+    public void addTopic(Topic topic) {
+        topics.add(topic);
+    }
+
     public Answer getAnswer() {
         return answer;
     }

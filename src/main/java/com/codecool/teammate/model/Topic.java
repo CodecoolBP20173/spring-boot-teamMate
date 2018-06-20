@@ -10,14 +10,12 @@ public class Topic {
     @GeneratedValue
     private int id;
     private String name;
-    private String description;
 
     @ManyToMany(mappedBy = "topics")
     private List<Question> questions = new ArrayList<>();
 
-    public Topic(String name, String description) {
+    public Topic(String name) {
         this.name = name;
-        this.description = description;
     }
 
     public Topic() {
@@ -39,14 +37,6 @@ public class Topic {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Question> getQuestions() {
         return questions;
     }
@@ -60,7 +50,6 @@ public class Topic {
         return "Topic{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 ", questions=" + questions +
                 '}';
     }
