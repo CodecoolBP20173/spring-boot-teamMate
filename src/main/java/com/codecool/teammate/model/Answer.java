@@ -1,4 +1,4 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,12 +11,19 @@ public class Answer {
     @GeneratedValue
     private int id;
     private String description;
+    @ManyToOne
     private Customer customer;
+    @OneToMany
     private List<Review> reviews = new ArrayList<>();
     @Temporal(TemporalType.DATE)
     private Date date;
+    @OneToOne
     private Question question;
+    @OneToMany
     private List<Vote> votes = new ArrayList<>();
+
+    public Answer() {
+    }
 
     public Answer(String description, Customer customer, Question question) {
         this.description = description;

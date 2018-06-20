@@ -1,17 +1,20 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Review {
     @Id
     @GeneratedValue
     private int id;
+    @ManyToOne
     private Answer answer;
+    @ManyToOne
     private Customer customer;
     private String description;
+
+    public Review() {
+    }
 
     public Review(Answer answer, Customer customer, String description) {
         this.answer = answer;

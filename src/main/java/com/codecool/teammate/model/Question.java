@@ -1,9 +1,6 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +13,22 @@ public class Question {
     private String title;
     @ManyToMany
     private List<Topic> topics = new ArrayList<>();
+
+    @OneToOne
     private Answer answer;
+
     private Date date;
+
+    @ManyToOne
     private Customer customer;
+
+    public Question() {
+    }
+
+    public Question(String title) {
+        this.title = title;
+        this.date = new Date();
+    }
 
     public Question(String title, List<Topic> topics) {
         this.title = title;

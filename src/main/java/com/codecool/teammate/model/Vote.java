@@ -1,17 +1,32 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Vote {
+    @Id
+    @GeneratedValue
+    private int id;
+    @OneToOne
     private Answer answer;
+    @OneToOne
     private Customer customer;
     private VoteType voteType;
+
+    public Vote() {
+    }
 
     public Vote(Answer answer, Customer customer, VoteType voteType) {
         this.answer = answer;
         this.customer = customer;
         this.voteType = voteType;
+    }
+
+    public Vote(Answer answer) {
+        this.answer = answer;
     }
 
     public Answer getAnswer() {

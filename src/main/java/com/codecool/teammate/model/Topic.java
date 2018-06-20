@@ -1,4 +1,4 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +20,9 @@ public class Topic {
     public Topic(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Topic() {
     }
 
     public int getId() {

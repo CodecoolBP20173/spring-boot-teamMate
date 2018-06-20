@@ -1,8 +1,7 @@
-package com.codecool.teammate;
+package com.codecool.teammate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -13,6 +12,11 @@ public class Customer {
     private String email;
     private String password;
     private RoleType roleType;
+    @OneToMany
+    private List<Question> questions;
+
+    public Customer() {
+    }
 
     public Customer(String name, String email, String password, RoleType roleType) {
         this.name = name;
