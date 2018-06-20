@@ -1,6 +1,7 @@
 package com.codecool.teammate.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Review {
@@ -12,14 +13,16 @@ public class Review {
     @ManyToOne
     private Customer customer;
     private String description;
+    private Date date;
 
     public Review() {
     }
 
-    public Review(Answer answer, Customer customer, String description) {
+    public Review(Answer answer, Customer customer, String description, Date date) {
         this.answer = answer;
         this.customer = customer;
         this.description = description;
+        this.date = date;
     }
 
     public int getId() {
