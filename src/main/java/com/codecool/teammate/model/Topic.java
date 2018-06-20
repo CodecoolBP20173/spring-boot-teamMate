@@ -1,9 +1,6 @@
 package com.codecool.teammate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +11,8 @@ public class Topic {
     private int id;
     private String name;
     private String description;
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "topics")
     private List<Question> questions = new ArrayList<>();
 
     public Topic(String name, String description) {
