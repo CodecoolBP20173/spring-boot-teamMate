@@ -18,11 +18,11 @@ public class Review {
     public Review() {
     }
 
-    public Review(Answer answer, Customer customer, String description, Date date) {
+    public Review(Answer answer, Customer customer, String description) {
         this.answer = answer;
         this.customer = customer;
         this.description = description;
-        this.date = date;
+        this.date = new Date();
     }
 
     public int getId() {

@@ -25,17 +25,17 @@ public class Answer {
     public Answer() {
     }
 
-    public Answer(String description, Customer customer, Question question, Date date) {
+    public Answer(String description, Customer customer, Question question) {
         this.description = description;
         this.customer = customer;
         this.question = question;
-        this.date = date;
+        this.date = new Date();
     }
 
-    public Answer(String description, Question question, Date date) {
+    public Answer(String description, Question question) {
         this.description = description;
         this.question = question;
-        this.date = date;
+        this.date = new Date();
     }
 
     public int getId() {

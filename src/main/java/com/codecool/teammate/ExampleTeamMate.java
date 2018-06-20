@@ -1,11 +1,13 @@
 package com.codecool.teammate;
 
 import com.codecool.teammate.model.Question;
+import org.eclipse.persistence.internal.oxm.schema.model.List;
+import org.eclipse.persistence.sessions.Session;
+import org.hibernate.SessionFactory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import javax.security.auth.login.Configuration;
+import javax.transaction.Transaction;
 
 
 public class ExampleTeamMate {
@@ -32,6 +34,7 @@ public class ExampleTeamMate {
 
         em.close();
         emf.close();
+
 
     }
 }

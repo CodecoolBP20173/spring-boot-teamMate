@@ -29,26 +29,26 @@ public class Question {
     public Question() {
     }
 
-    public Question(String title, Date date) {
+    public Question(String title) {
         this.title = title;
-        this.date = date;
+        this.date = new Date();
         this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
                 / (60L * 60L * 1000L * 24L);
     }
 
-    public Question(String title, List<Topic> topics, Date date) {
+    public Question(String title, List<Topic> topics) {
         this.title = title;
         this.topics = topics;
-        this.date = date;
+        this.date = new Date();
         this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
                 / (60L * 60L * 1000L * 24L);
     }
 
-    public Question(String title, List<Topic> topics, Customer customer, Date date) {
+    public Question(String title, List<Topic> topics, Customer customer) {
         this.title = title;
         this.topics = topics;
         this.customer = customer;
-        this.date = date;
+        this.date = new Date();
         this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
                 / (60L * 60L * 1000L * 24L);
     }
