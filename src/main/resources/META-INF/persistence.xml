@@ -4,16 +4,16 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="jpaexamplePU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="teammatePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.codecool.teammate.Answer</class>
-        <class>com.codecool.teammate.Customer</class>
-        <class>com.codecool.teammate.Question</class>
-        <class>com.codecool.teammate.Review</class>
-        <class>com.codecool.teammate.Topic</class>
-        <class>com.codecool.teammate.Vote</class>
-        <class>com.codecool.teammate.VoteType</class>
-        <class>com.codecool.teammate.RoleType</class>
+        <class>com.codecool.teammate.model.Answer</class>
+        <class>com.codecool.teammate.model.Customer</class>
+        <class>com.codecool.teammate.model.Question</class>
+        <class>com.codecool.teammate.model.Review</class>
+        <class>com.codecool.teammate.model.Topic</class>
+        <class>com.codecool.teammate.model.Vote</class>
+        <class>com.codecool.teammate.model.VoteType</class>
+        <class>com.codecool.teammate.model.RoleType</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
             <property name="hibernate.hbm2dll.auto" value="create-drop"/>
@@ -23,7 +23,7 @@
             <property name="javax.persistence.schema-generation.scripts.drop-target" value="src/main/resources/META-INF/drop-schema.ddl"/>
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/jpaexampleDB"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/teammateDB"/>
             <property name="javax.persistence.jdbc.user" value="dorasurmann"/>
             <property name="javax.persistence.jdbc.password" value="Kakukk18"/>
             <!--<property name="javax.persistence.sql-load-script-source" value="insert.sql"/>-->
