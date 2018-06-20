@@ -2,6 +2,7 @@ package com.codecool.teammate.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class Question {
 
     private Date date;
 
+    @Transient
+    private long age;
+
     @ManyToOne
     private Customer customer;
 
@@ -28,12 +32,16 @@ public class Question {
     public Question(String title) {
         this.title = title;
         this.date = new Date();
+        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
+                / (60L * 60L * 1000L * 24L);
     }
 
     public Question(String title, List<Topic> topics) {
         this.title = title;
         this.topics = topics;
         this.date = new Date();
+        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
+                / (60L * 60L * 1000L * 24L);
     }
 
     public Question(String title, List<Topic> topics, Customer customer) {
@@ -41,6 +49,8 @@ public class Question {
         this.topics = topics;
         this.customer = customer;
         this.date = new Date();
+        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
+                / (60L * 60L * 1000L * 24L);
     }
 
     public int getId() {
