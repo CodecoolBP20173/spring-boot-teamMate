@@ -1,0 +1,13 @@
+What is Java Enterprise (J2EE, JEE)? What is the major difference between the Standard edition (JSE) and Enterprise edition (JEE)?
+What are Java Enterprise Containers? What are they used for?
+What is EJB?
+What is JSF?
+What is Hibernate? What are the advantages, limitations?
+What is JSP?
+What is a servlet?
+Differentiate between .ear,  .jar and .war files.
+What is Spring?
+What are the advantages of the Spring Framework?
+What is a Deployment descriptor?
+What are the major differences between Maven, Ant and Gradle?
+What is n-tier (or multi-tier) architecture?

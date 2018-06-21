@@ -1,0 +1,15 @@
+What is the difference between HTML and XML?
+What is a schema in XML? How to validate a schema?
+What is XSLT?
+What kind of XML parsers do you know? When and how to use them?
+When to use AJAX? Bring examples.
+What is SOA? When to use?
+What is the connection between WSDL and Webservices?
+What kind of HTTP status codes do you know?
+What is a REST API?
+What is JSON? When to use?
+What is TCP/IP? What layers does it define, what are they responsible for?
+What’s the difference between TCP and UDP?
+How does an HTTP Request look like? What are the most relevant HTTP header fields?
+How does an HTTP Response look like? What are the most relevant HTTP header fields?
+What DNS is? How does it work?
