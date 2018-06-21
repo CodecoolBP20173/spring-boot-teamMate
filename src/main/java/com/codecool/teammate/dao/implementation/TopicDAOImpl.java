@@ -2,12 +2,26 @@ package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.TopicDAO;
 import com.codecool.teammate.model.Topic;
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
 
 public class TopicDAOImpl implements TopicDAO {
+
+    private static TopicDAOImpl instance = null;
+
+    /* A private Constructor prevents any other class from instantiating.
+     */
+    private TopicDAOImpl() {
+    }
+
+    public static TopicDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new TopicDAOImpl();
+        }
+        return instance;
+    }
+
     private EntityManager getEntityManager() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
         EntityManager em = emf.createEntityManager();
@@ -43,10 +57,14 @@ public class TopicDAOImpl implements TopicDAO {
 
     @Override
     public List<Topic> findAllTopic() {
-        EntityManager em = getEntityManager();
-        Query query = em.createQuery("SELECT t FROM Topic t");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createQuery("SELECT t FROM ");
         List<Topic> resultList = query.getResultList();
+
         em.close();
+        emf.close();
         return resultList;
     }
 
