@@ -11,6 +11,7 @@ public class Question {
     @Id
     @GeneratedValue
     private int id;
+    @Column (length = 1024)
     private String title;
     @ManyToMany
     private List<Topic> topics = new ArrayList<>();
@@ -34,6 +35,14 @@ public class Question {
         this.date = new Date();
         this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
                 / (60L * 60L * 1000L * 24L);
+    }
+
+    public Question(String title, Topic topic) {
+        this.title = title;
+        this.date = new Date();
+        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
+                / (60L * 60L * 1000L * 24L);
+        topics.add(topic);
     }
 
     public Question(String title, List<Topic> topics) {
