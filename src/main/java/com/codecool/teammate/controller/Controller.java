@@ -15,14 +15,14 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/"})
 public class Controller extends HttpServlet {
 
-         @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-             TopicDAOImpl topicDAO = TopicDAOImpl.getInstance();
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         TopicDAOImpl topicDAO = TopicDAOImpl.getInstance();
 
-             TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-             WebContext context = new WebContext(req, resp, req.getServletContext());
+         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+         WebContext context = new WebContext(req, resp, req.getServletContext());
 
-             context.setVariable("topics", topicDAO.findAllTopic());
-             engine.process("index.html", context, resp.getWriter());
-        }
+         context.setVariable("topics", topicDAO.findAllTopic());
+         engine.process("index.html", context, resp.getWriter());
     }
+}
