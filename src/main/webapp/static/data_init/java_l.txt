@@ -1,0 +1,73 @@
+What is the JVM?
+What is the difference between the JRE and the JDK?
+What is the difference between long and Long?
+Can a long store longer number then Long?
+What is autoboxing and unboxing?
+If you have a variable, that shall store a positive whole number between 0 and 200, what primitive type would you use to store it?
+Think about money ;) How would you store a currency value, that shall support decimal parts? Think is through again, and try to think outside of the box!
+What do you think, why there is no string type in Java?
+What is the largest number you can work with in Java?
+What happens if you try to call something, that you have no access to, because of data hiding?
+What happens if you try to delete/drop an item from an array, while you are iterating over it?
+What happens if you try to delete/drop an item from a List, while you are iterating over it?
+What happens if you try to add an item to the beginning of an array, while you are iterating over it?
+What happens if you try to add an item to the beginning of a List, while you are iterating over it?
+What happens if you try to add an item to the middle of an array, while you are iterating over it?
+What happens if you try to add an item to the middle of a List, while you are iterating over it?
+What happens if you try to add an item to the end of an array, while you are iterating over it?
+What happens if you try to add an item to the end of a List, while you are iterating over it?
+How can you safely add/remove items to/from a List?
+What is the "golden rule" of variable scoping in Java? What is the lifetime of variables?
+What is garbage collector, in a nutshell?
+If you need to access the iterator variable after a for loop, how would you do it?
+What do you think about global variables?
+What kind of packages do you know under java.util.* ? Bring at least 3 examples.
+What is the difference between Reader and InputStream in Java?
+Given two Java programs on two different machines. How can you communicate between the two? What are the possible ways?
+When you use method overriding, can you throw fewer exceptions in the subclass than in the parent class? Why?
+When you use method overriding, can you throw more exceptions in the subclass than in the parent class? Why?
+When you use method overriding, can you change the access level of the method, from protected to public? Why?
+When you use method overriding, can you change the access level of the method, from public to protected? Why?
+What is difference between Error and Exception?
+Which interfaces extend the Collection interface in Java. Which classes?
+Does map extends the Collection interface? Why?
+What is JPA? What is JDBC? Which are the advantages and disadvantages of each? When to use each?
+How does HashMap work?
+What is the connection between equals() and hashCode()? How are they used in HashMap?
+Why is it important for keys in a map to have an immutable type? (Consider String for example.)
+What is the purpose of the ‘equals()’ method?
+What is the difference between '==' and 'equals()'?
+What is exception swallowing? Is it good practice? Why?
+What is the difference between checked exceptions and unchecked exceptions? Could you bring example for each?
+What is Error in Java and how does it relate to Exception?
+What does 'fail fast' means in term of exception handling? Why is it a good practice?
+When does 'finally' block run? What it is used for? Could you give an example from your projects when you would use 'finally'?
+Which order should we catch the exceptions? Why?
+Should we catch as specific Exception as possible or just catching 'Exception' is enough? Why?
+In which case should we catch an exception? Why?
+How can we handle exception? What can we and should we do with an exception in the 'catch' block?
+What are the typical exceptions in Java?
+What are the access modifiers in Java? Which one could we use for class?
+What does ‘static’ keyword means?
+Could we access static variable (or method) from a non-static method? Why?
+Could we access non-static variable (or method) from a static method? Why?
+Can an “enum” contains methods in Java? Explain.
+What are “checked” and “unchecked” exceptions?
+What are “generics” in Java? When to use? Show examples.
+What is the benefit of having “generic” containers in Java?
+How many instances you have of a static variable of a given class in the JVM?
+Why main() method is declared as static? Explain.
+Why is it not a good practice to write a lot of static methods?
+Can the main method be overridden? Explain your answer!
+When would you use a private/protected/public attribute? What is the difference?
+What are the features of static attributes and static methods of a class? What are the benefits, when to use them?
+What is annotation? What can be annotated and how? Show examples.
+What is an abstract class?
+What is a ternary operator?
+What is the use of finalize method? Is it a good practice to use it in Java? Why?
+How many instances can be created for an abstract class?
+What is ‘this’ reference?
+What does final means in case of variable, method and class?
+What is super keyword?
+What is the default access modifier in a class?
+Consider the following class definition and implement the solutions:

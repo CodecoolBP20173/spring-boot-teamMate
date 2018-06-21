@@ -1,0 +1,15 @@
+Databases
+How can you connect your application to a database server? What are the possible ways?
+When do you use the DISTINCT keyword in SQL?
+What are aggregate functions in SQL? Give 3 examples.
+What do you know about database normalization?
+What kind of JOIN types do you know in SQL? Could you give examples?
+What are database transactions? When to use?
+What is a dead-lock in databases? How to avoid?
+What is a two-phase commit? Bring an example how to use?
+What kind of database relations do you know? How to define them?
+What is an ORM? What are the benefits, when to use?
+What is the difference between JDBC and JPA?
+What is the DAO pattern? When and how to implement?
+How would you keep track of what kind of data has changed after an UPDATE or DELETE operate in a table?
+You have a table with an “address” field which contains data like 3525, Miskolc, Régiposta 9. (postcode, city, street name and address). How would you query all records related Miskolc?
