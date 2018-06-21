@@ -25,7 +25,7 @@ public class TopicDAOImpl implements TopicDAO {
     private EntityManager getEntityManager() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
         EntityManager em = emf.createEntityManager();
-        emf.close();
+
         return em;
     }
 
@@ -68,6 +68,7 @@ public class TopicDAOImpl implements TopicDAO {
         List<Topic> resultList = query.getResultList();
 
         em.close();
+
         return resultList;
     }
 
