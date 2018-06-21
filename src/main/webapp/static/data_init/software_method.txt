@@ -1,0 +1,10 @@
+What kind of software-lifecycle models do you know?
+What kind of software development methodologies do you know? What are the main features of these?
+What is a UML diagram? What kind of diagram types do you know?
+What is a UML class diagram? What are the typical elements?
+What kind of design patterns do you know? Bring at least 3 examples.
+What is the purpose of the Iterator Pattern?
+What do you know about the SOLID principles?
+How would you separate data storage code and business logic code (which uses stored data) in an application?
+What are the SCRUM roles? What are the SCRUM ceremonies? What are the SCRUM artifacts?
+What is the main goal of a retrospective meeting?

@@ -1,0 +1,11 @@
+Fibonacci sequences. Write a method(or pseudo code), that generates the Fibonacci sequences.
+Factorial a) Write a function that, given a number as input, returns the factorial of that number. The factorial of a number ‘n’ is the product of all positive integers less than or equal to ‘n’. So, the factorial of 6 would be 6*5*4*3*2*1 = 720. The factorial of 0 is 1.
+Factorial b) Write your solution with recursion.
+Write a function, that print all the files in a given folder and sub-folders with using recursion.
+What is “Stack overflow”? Write a code, that ends up with stack overflow.
+What is binary search tree (BST)? Write an implementation in Java.
+What is linked list? How to find if linked list has a loop?
+How to find middle element of linked list in one pass?
+In an integer array, there is 1 to 100 number, out of one is duplicate, how to find?
+What is the difference between Stack and Queue data structure?
+What is QuickSort? Describe the main logic of this sorting algorithm.

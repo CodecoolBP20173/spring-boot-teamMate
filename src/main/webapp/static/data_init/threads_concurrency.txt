@@ -1,0 +1,9 @@
+When you need to use threads in an application?
+What is a daemon thread?
+What is the difference between synchronous and asynchronous execution?
+What is the difference between concurrent and parallel execution of code?
+What is the most important problem developers are faced when using threads?
+In what kind of situations can deadlocks occur?
+What are possible ways to prevent deadlocks from occurring?
+What does critical section or critical region mean in the context of concurrent programming?
+How do you execute critical code in Java/C#/etc.? What mechanism(s) can you use?

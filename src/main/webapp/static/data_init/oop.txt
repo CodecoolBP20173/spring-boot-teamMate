@@ -1,0 +1,44 @@
+What is OOP?
+What is Inheritance?
+What is Polymorphism?
+What is Abstraction?
+What is Encapsulation?
+What is a class?
+What is an object?
+What is casting? What is the difference between up vs downcasting?
+What is Encapsulation? Explain the concept with a realistic example!
+What is Polymorphism? Explain the concept with a realistic example!
+What is Inheritance? Explain the concept with a realistic example!
+Define a constructor?
+What is method overloading?
+What are different types of arguments? (context: pass by value / pass by reference)
+What is method overriding?
+What is an interface?
+What is exception handling?
+Difference between overloading and overriding?
+What is an abstraction?
+What are access modifiers?
+What is early and late binding?
+Do we require parameter for constructors?
+What is a copy constructor?
+Whether static method can use non static members?
+What are base class, subclass and superclass?
+What is static and dynamic binding?
+Which OOP concept is used as reuse mechanism?
+Which OOP concept exposes only necessary information to the calling functions?
+What is data hiding?
+What is variable shadowing?
+What is the difference between hiding a static method and overriding an instance method?
+Define the following terms: Instantiation, Attribute, Method
+Explain how object oriented languages implement abstract data types.
+Explain how object oriented languages attempt to simplify memory management for Programmers.
+Explain the “Single Responsibility” principle!
+What is an object oriented program? Explain, show.
+Draw an object oriented family (as entities, with relations) on the whiteboard.
+What does it mean that an object is Immutable?
+How do you make a class immutable? What do you need to watch out for?
+How do you prevent developers from subclassing a class?
+How do you prevent developers from overriding a method in a subclass?
+How do you prevent developers from changing the value of a variable?
+What is the programming technique, concept that you can use to create an implementation of an interface during runtime?
+What are the possible of uses of reflection?
