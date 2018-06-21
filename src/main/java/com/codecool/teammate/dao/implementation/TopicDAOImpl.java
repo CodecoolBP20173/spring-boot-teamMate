@@ -22,13 +22,6 @@ public class TopicDAOImpl implements TopicDAO {
         return instance;
     }
 
-    private EntityManager getEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-        EntityManager em = emf.createEntityManager();
-        emf.close();
-        return em;
-    }
-
     @Override
     public void add(Topic topic) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
