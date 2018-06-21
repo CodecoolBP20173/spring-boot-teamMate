@@ -51,6 +51,8 @@ public class ExampleTeamMate {
         System.out.println("--Found question #1");
         System.out.println("----title----" + foundQuestion1.getTitle());
 
+
+
         em.close();
         emf.close();
 
