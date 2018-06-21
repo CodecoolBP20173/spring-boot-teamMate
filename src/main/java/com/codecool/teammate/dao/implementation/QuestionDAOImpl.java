@@ -2,6 +2,7 @@ package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.QuestionDAO;
 import com.codecool.teammate.model.Question;
+import com.codecool.teammate.model.Topic;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -72,7 +73,7 @@ public class QuestionDAOImpl implements QuestionDAO {
     public List<Question> findAllQuestionByTopic(int id){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT q FROM Question q WHERE q.id = ?");
+        Query query = em.createQuery("SELECT t.questions FROM Topic t WHERE t.id = ?");
         query.setParameter(0, id);
         List<Question> resultList = query.getResultList();
         em.close();
