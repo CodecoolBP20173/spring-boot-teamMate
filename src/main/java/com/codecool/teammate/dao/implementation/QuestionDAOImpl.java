@@ -11,6 +11,20 @@ import java.util.List;
 
 public class QuestionDAOImpl implements QuestionDAO {
 
+    private static QuestionDAOImpl instance = null;
+
+    /* A private Constructor prevents any other class from instantiating.
+     */
+    private QuestionDAOImpl() {
+    }
+
+    public static QuestionDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new QuestionDAOImpl();
+        }
+        return instance;
+    }
+
     @Override
     public void add(Question question) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");

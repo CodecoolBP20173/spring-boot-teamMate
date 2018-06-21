@@ -6,10 +6,25 @@ import com.codecool.teammate.model.Answer;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import java.util.List;
 
 public class AnswerDAOImpl implements AnswerDAO {
+
+
+    private static AnswerDAOImpl instance = null;
+
+    /* A private Constructor prevents any other class from instantiating.
+     */
+    private AnswerDAOImpl() {
+    }
+
+    public static AnswerDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new AnswerDAOImpl();
+        }
+        return instance;
+    }
+
+
     @Override
     public void add(Answer answer) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
