@@ -2,7 +2,7 @@ package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.TopicDAO;
 import com.codecool.teammate.model.Topic;
-import com.sun.istack.internal.NotNull;
+
 
 import javax.persistence.*;
 import java.util.List;
