@@ -18,6 +18,7 @@ public class TopicController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuestionDAOImpl questionDAO = QeustionDAOImpl.getInstance();
+        TopicDAOImpl topicDAO = TopicDAOImpl.getInstance();
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -26,6 +27,7 @@ public class TopicController extends HttpServlet {
 
         if (idStr != null) {
             int id = Integer.parseInt(idStr);
+            context.setVariable("topic", topicDAO.find(id));
             context.setVariable("questions", questionDAO.findAllQuestionByTopic(id));
         }
 

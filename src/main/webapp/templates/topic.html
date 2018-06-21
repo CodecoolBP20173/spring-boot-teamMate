@@ -12,6 +12,8 @@
 <h1>TeamMate</h1>
 
 <div class="container">
+    <h2 th:text="${topic.getName()}">Topic name</h2>
+
     <div class="list-group">
         <th:block th:each="question : ${questions}">
             <a th:href="@{/questions(id=${question.getId()})}"
