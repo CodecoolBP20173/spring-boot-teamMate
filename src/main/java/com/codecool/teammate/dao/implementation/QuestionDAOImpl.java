@@ -2,7 +2,6 @@ package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.QuestionDAO;
 import com.codecool.teammate.model.Question;
-import com.codecool.teammate.model.Topic;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,55 +11,58 @@ import java.util.List;
 
 public class QuestionDAOImpl implements QuestionDAO {
 
-    private EntityManager getEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-        EntityManager em = emf.createEntityManager();
-        emf.close();
-        return em;
-    }
-
     @Override
     public void add(Question question) {
-        EntityManager em = getEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
         em.persist(question);
         em.close();
+        emf.close();
     }
 
     @Override
     public Question find(int id) {
-        EntityManager em = getEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
         Question questionToFind = em.find(Question.class, id);
         em.close();
+        emf.close();
 
         return questionToFind;
     }
 
     @Override
     public void remove(int id) {
-        EntityManager em = getEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
         Question questionToRemove = find(id);
         if (questionToRemove != null) {
             em.remove(questionToRemove);
         }
         em.close();
+        emf.close();
     }
 
     @Override
     public List<Question> findAllQuestion() {
-        EntityManager em = getEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("SELECT q FROM Question q");
         List<Question> resultList = query.getResultList();
         em.close();
+        emf.close();
         return resultList;
     }
 
     @Override
     public List<Question> findAllQuestionByTopic(int id){
-        EntityManager em = getEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
+        EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("SELECT q FROM Question q WHERE q.id = ?");
         query.setParameter(0, id);
         List<Question> resultList = query.getResultList();
         em.close();
+        emf.close();
         return resultList;
     }
 
