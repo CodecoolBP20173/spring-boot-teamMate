@@ -8,6 +8,4 @@ public interface AnswerDAO {
     void add (Answer answer);
     Answer find (int id);
     void remove(int id);
-
-    List<Answer> findAllQuestionByQuestion(int id);
 }
