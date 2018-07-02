@@ -5,20 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Topic {
+public class Tag {
+
     @Id
     @GeneratedValue
     private int id;
     private String name;
 
-    @OneToMany
-    private List<Question> questions = new ArrayList<>();
+    @ManyToMany(mappedBy = "tags")
+    private List <Question> questions= new ArrayList();
 
-    public Topic(String name) {
+    public Tag(String name, Question question) {
         this.name = name;
-    }
-
-    public Topic() {
     }
 
     public int getId() {
@@ -47,7 +45,7 @@ public class Topic {
 
     @Override
     public String toString() {
-        return "Topic{" +
+        return "Tag{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", questions=" + questions +

@@ -13,16 +13,15 @@ public class Question {
     private int id;
     @Column (length = 1024)
     private String title;
+    @ManyToOne
+    private Topic topic;
     @ManyToMany
-    private List<Topic> topics = new ArrayList<>();
+    private List<Tag> tags = new ArrayList<>();
 
     @OneToOne
     private Answer answer;
 
     private Date date;
-
-    @Transient
-    private long age;
 
     @ManyToOne
     private Customer customer;
@@ -33,33 +32,27 @@ public class Question {
     public Question(String title) {
         this.title = title;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
     }
 
     public Question(String title, Topic topic) {
         this.title = title;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
-        topics.add(topic);
+        this.topic = topic;
     }
 
-    public Question(String title, List<Topic> topics) {
+    public Question(String title, Topic topic, Customer customer) {
         this.title = title;
-        this.topics = topics;
-        this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
-    }
-
-    public Question(String title, List<Topic> topics, Customer customer) {
-        this.title = title;
-        this.topics = topics;
+        this.topic = topic;
         this.customer = customer;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
+    }
+
+    public Question(String title, Topic topic, List<Tag> tags, Customer customer) {
+        this.title = title;
+        this.topic = topic;
+        this.tags = tags;
+        this.customer = customer;
+        this.date = new Date();
     }
 
     public int getId() {
@@ -78,17 +71,9 @@ public class Question {
         this.title = title;
     }
 
-    public List<Topic> getTopics() {
-        return topics;
-    }
+    public Topic getTopic() { return topic; }
 
-    public void setTopics(List<Topic> topics) {
-        this.topics = topics;
-    }
-
-    public void addTopic(Topic topic) {
-        topics.add(topic);
-    }
+    public void setTopic(Topic topic) { this.topic = topic; }
 
     public Answer getAnswer() {
         return answer;
@@ -114,12 +99,14 @@ public class Question {
         this.customer = customer;
     }
 
+
+
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", topics=" + topics +
+                ", topic=" + topic +
                 ", answer=" + answer +
                 ", date=" + date +
                 ", customer=" + customer +
