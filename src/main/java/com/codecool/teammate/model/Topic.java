@@ -11,7 +11,7 @@ public class Topic {
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "topics")
+    @OneToMany
     private List<Question> questions = new ArrayList<>();
 
     public Topic(String name) {
