@@ -23,9 +23,6 @@ public class Question {
 
     private Date date;
 
-    @Transient
-    private long age;
-
     @ManyToOne
     private Customer customer;
 
@@ -35,15 +32,11 @@ public class Question {
     public Question(String title) {
         this.title = title;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
     }
 
     public Question(String title, Topic topic) {
         this.title = title;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
         this.topic = topic;
     }
 
@@ -52,8 +45,6 @@ public class Question {
         this.topic = topic;
         this.customer = customer;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
     }
 
     public Question(String title, Topic topic, List<Tag> tags, Customer customer) {
@@ -62,8 +53,6 @@ public class Question {
         this.tags = tags;
         this.customer = customer;
         this.date = new Date();
-        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
-                / (60L * 60L * 1000L * 24L);
     }
 
     public int getId() {
