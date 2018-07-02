@@ -15,6 +15,8 @@ public class Question {
     private String title;
     @ManyToOne
     private Topic topic;
+    @ManyToMany
+    private List<Tag> tags = new ArrayList<>();
 
     @OneToOne
     private Answer answer;
@@ -48,6 +50,16 @@ public class Question {
     public Question(String title, Topic topic, Customer customer) {
         this.title = title;
         this.topic = topic;
+        this.customer = customer;
+        this.date = new Date();
+        this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
+                / (60L * 60L * 1000L * 24L);
+    }
+
+    public Question(String title, Topic topic, List<Tag> tags, Customer customer) {
+        this.title = title;
+        this.topic = topic;
+        this.tags = tags;
         this.customer = customer;
         this.date = new Date();
         this.age = (Calendar.getInstance().getTimeInMillis() - date.getTime())
@@ -97,6 +109,8 @@ public class Question {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 
     @Override
     public String toString() {
