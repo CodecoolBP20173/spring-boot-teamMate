@@ -9,54 +9,27 @@ import javax.persistence.Persistence;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
-    private static CustomerDAOImpl instance = null;
+    private final EntityManager em;
 
-    /* A private Constructor prevents any other class from instantiating.
-     */
-    private CustomerDAOImpl() {
-    }
+    public CustomerDAOImpl(EntityManager em) {
+        this.em = em;
+    };
 
-    public static CustomerDAOImpl getInstance() {
-        if (instance == null) {
-            instance = new CustomerDAOImpl();
-        }
-        return instance;
-    }
 
     @Override
-    public void add (Customer customer) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-        EntityManager em = emf.createEntityManager();
-
-        em.persist(customer);
-
-        em.close();
-        emf.close();
-    }
+    public void add (Customer customer) { em.persist(customer); }
 
     @Override
     public Customer find(int id) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-        EntityManager em = emf.createEntityManager();
-
         Customer customerToFind = em.find(Customer.class, id);
-
-        em.close();
-        emf.close();
         return customerToFind;
     }
 
     @Override
     public void remove(int id) {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-        EntityManager em = emf.createEntityManager();
         Customer customerToRemove = find(id);
         if (customerToRemove != null) {
             em.remove(customerToRemove);
         }
-        em.close();
-        emf.close();
-
     }
 }
