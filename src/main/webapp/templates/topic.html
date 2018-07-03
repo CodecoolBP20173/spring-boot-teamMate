@@ -14,14 +14,22 @@
 <div class="container">
     <h2 th:text="${topic.getName()}">Topic name</h2>
 
-    <div class="list-group">
-        <th:block th:each="question : ${questions}">
-            <a th:href="@{/questions(id=${question.getId()})}"
-               th:text="${question.getTitle()}"
-               class="list-group-item list-group-item-action disabled">Question name</a>
-        </th:block>
-    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <div class="list-group">
+                <th:block th:each="question : ${questions}">
+                    <div class="breadcrumb-item"><a th:text="${topic.getName()}"></a></div>
+                    <a th:href="@{/questions(id=${question.getId()})}"
+                       th:text="${question.getTitle()}"
+                    class="breadcrumb-item active" aria-current="page">Question name</a></li>
+                </th:block>
+            </div>
+        </ol>
+    </nav>
 
 </div>
 </body>
 </html>
+
+
+
