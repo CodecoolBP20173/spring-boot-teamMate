@@ -18,6 +18,7 @@ public class DAOInit {
     CustomerDAOImpl customerDAO = new CustomerDAOImpl(em);
     ReviewDAOImpl reviewDAO = new ReviewDAOImpl(em);
     TopicDAOImpl topicDAO = new TopicDAOImpl(em);
+    VoteDAOImpl voteDAO = new VoteDAOImpl(em);
 
     public DAOInit() {
     }
@@ -31,4 +32,6 @@ public class DAOInit {
     public ReviewDAOImpl getReviewDAO() { return reviewDAO; }
 
     public TopicDAOImpl getTopicDAO() { return topicDAO; }
+
+    public VoteDAOImpl getVoteDAO() { return voteDAO; }
 }
