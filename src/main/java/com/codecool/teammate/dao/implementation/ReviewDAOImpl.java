@@ -16,8 +16,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     @Override
     public Review find(int id) {
-        Review reviewToFind= em.find(Review.class, id);
-        return reviewToFind;
+        return em.find(Review.class, id);
     }
 
     @Override

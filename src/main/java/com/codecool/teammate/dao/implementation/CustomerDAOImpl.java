@@ -11,16 +11,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     public CustomerDAOImpl(EntityManager em) {
         this.em = em;
-    };
-
+    }
 
     @Override
     public void add (Customer customer) { em.persist(customer); }
 
     @Override
     public Customer find(int id) {
-        Customer customerToFind = em.find(Customer.class, id);
-        return customerToFind;
+        return em.find(Customer.class, id);
     }
 
     @Override

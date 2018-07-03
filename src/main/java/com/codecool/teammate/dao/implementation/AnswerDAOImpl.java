@@ -18,8 +18,7 @@ public class AnswerDAOImpl implements AnswerDAO {
 
     @Override
     public Answer find(int id) {
-        Answer answerToFind= em.find(Answer.class, id);
-        return answerToFind;
+        return em.find(Answer.class, id);
     }
 
     @Override

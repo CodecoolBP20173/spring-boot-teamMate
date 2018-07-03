@@ -19,8 +19,7 @@ public class TopicDAOImpl implements TopicDAO {
 
     @Override
     public Topic find(int id) {
-        Topic topicToFind = em.find(Topic.class, id);
-        return topicToFind;
+        return em.find(Topic.class, id);
     }
 
     @Override

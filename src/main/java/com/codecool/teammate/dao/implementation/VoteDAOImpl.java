@@ -14,14 +14,11 @@ public class VoteDAOImpl implements VoteDAO {
     }
 
     @Override
-    public void add(Vote vote) {
-        em.persist(vote);
-    }
+    public void add(Vote vote) { em.persist(vote); }
 
     @Override
     public Vote find(int id) {
-        Vote voteToFind = em.find(Vote.class, id);
-        return voteToFind;
+        return em.find(Vote.class, id);
     }
 
     @Override

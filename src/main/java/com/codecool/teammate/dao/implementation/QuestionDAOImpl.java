@@ -16,15 +16,11 @@ public class QuestionDAOImpl implements QuestionDAO {
     }
 
     @Override
-    public void add(Question question) {
-        em.persist(question);
-    }
+    public void add(Question question) { em.persist(question); }
 
     @Override
     public Question find(int id) {
-        Question questionToFind = em.find(Question.class, id);
-
-        return questionToFind;
+        return em.find(Question.class, id);
     }
 
     @Override
@@ -49,5 +45,4 @@ public class QuestionDAOImpl implements QuestionDAO {
         List<Question> resultList = query.getResultList();
         return resultList;
     }
-
 }
