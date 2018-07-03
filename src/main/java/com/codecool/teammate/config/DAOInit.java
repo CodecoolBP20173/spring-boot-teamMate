@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class DAOInit {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
     private static EntityManager em = emf.createEntityManager();
 
-    private HashMap<DAOs, Object> daOsObjectHashMap = new HashMap<>();
+    private HashMap<String, Object> daoHashMap = new HashMap<>();
 
     public DAOInit() {}
 
@@ -24,20 +25,26 @@ public class DAOInit {
     }
 
     private void createDAOs() {
-        daOsObjectHashMap.put(DAOs.ANSWER, new AnswerDAOImpl(em));
-        daOsObjectHashMap.put(DAOs.CUSTOMER, new CustomerDAOImpl(em));
-        daOsObjectHashMap.put(DAOs.QUESTION, new QuestionDAOImpl(em));
-        daOsObjectHashMap.put(DAOs.REVIEW, new ReviewDAOImpl(em));
-        daOsObjectHashMap.put(DAOs.TOPIC, new TopicDAOImpl(em));
-        daOsObjectHashMap.put(DAOs.VOTE, new VoteDAOImpl(em));
+        addDAO(new AnswerDAOImpl(em));
+        addDAO(new QuestionDAOImpl(em));
+        addDAO(new ReviewDAOImpl(em));
+        addDAO(new CustomerDAOImpl(em));
+        addDAO(new TopicDAOImpl(em));
+        addDAO(new VoteDAOImpl(em));
+    }
+
+    private void addDAO(Object object) {
+        daoHashMap.put(object.getClass().getTypeName(), object);
     }
 
     private void injectDAOs(List<HttpServlet> servlets) {
         for (HttpServlet servlet : servlets) {
             for (Field field : servlet.getClass().getDeclaredFields()) {
                 if (field.isAnnotationPresent(InjectDAO.class)) {
-                    DAOs selectedDAO = field.getAnnotation(InjectDAO.class).value();
-                    Object dao = daOsObjectHashMap.get(selectedDAO);
+                    Object dao = daoHashMap.get(field.getAnnotatedType().getType().getTypeName());
+                    if (dao == null) {
+                        throw new NoSuchElementException("No such DAO in daoHashMap");
+                    }
                     try {
                         boolean accessible = field.isAccessible();
 
@@ -47,7 +54,7 @@ public class DAOInit {
 
                         field.setAccessible(accessible);
 
-//                        System.out.println(servlet.getClass().getName() + " servlets " + field.getName() + " field has been set successfully");
+                        System.out.println(servlet.getClass().getName() + " servlets " + field.getName() + " field has been set successfully");
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                         System.out.println("Setting field failed.");
