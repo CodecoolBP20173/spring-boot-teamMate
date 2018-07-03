@@ -4,8 +4,6 @@ import com.codecool.teammate.dao.VoteDAO;
 import com.codecool.teammate.model.Vote;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class VoteDAOImpl implements VoteDAO {
 

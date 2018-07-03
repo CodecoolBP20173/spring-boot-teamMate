@@ -4,8 +4,6 @@ import com.codecool.teammate.dao.AnswerDAO;
 import com.codecool.teammate.model.Answer;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class AnswerDAOImpl implements AnswerDAO {
 

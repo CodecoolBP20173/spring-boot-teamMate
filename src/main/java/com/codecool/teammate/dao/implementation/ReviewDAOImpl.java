@@ -4,8 +4,6 @@ import com.codecool.teammate.dao.ReviewDAO;
 import com.codecool.teammate.model.Review;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class ReviewDAOImpl implements ReviewDAO {
 

@@ -4,12 +4,11 @@ import com.codecool.teammate.dao.QuestionDAO;
 import com.codecool.teammate.model.Question;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
 public class QuestionDAOImpl implements QuestionDAO {
+
     private final EntityManager em;
 
     public QuestionDAOImpl(EntityManager em) {

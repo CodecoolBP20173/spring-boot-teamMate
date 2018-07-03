@@ -4,8 +4,6 @@ import com.codecool.teammate.dao.CustomerDAO;
 import com.codecool.teammate.model.Customer;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
