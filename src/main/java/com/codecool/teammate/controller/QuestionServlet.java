@@ -1,5 +1,6 @@
 package com.codecool.teammate.controller;
 
+import com.codecool.teammate.config.DAOInit;
 import com.codecool.teammate.config.TemplateEngineUtil;
 import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
 import com.codecool.teammate.dao.implementation.TopicDAOImpl;
@@ -13,13 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/topics"})
-public class TopicController extends HttpServlet {
+public class QuestionServlet extends HttpServlet {
+
+    private QuestionDAOImpl questionDAO;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+
+        DAOInit daoInit = new DAOInit();
+
+        questionDAO = daoInit.getQuestionDAO();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestionDAOImpl questionDAO = QuestionDAOImpl.getInstance();
-        TopicDAOImpl topicDAO = TopicDAOImpl.getInstance();
+        init();
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -28,10 +38,9 @@ public class TopicController extends HttpServlet {
 
         if (idStr != null) {
             int id = Integer.parseInt(idStr);
-            context.setVariable("topic", topicDAO.find(id));
-            context.setVariable("questions", questionDAO.findAllQuestionByTopic(id));
+            context.setVariable("question", questionDAO.find(id));
         }
 
-        engine.process("topic.html", context, resp.getWriter());
+        engine.process("question.html", context, resp.getWriter());
     }
 }

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/questions"})
-public class QuestionController extends HttpServlet {
+public class TopicServlet extends HttpServlet {
+
     private QuestionDAOImpl questionDAO;
 
     @Override
@@ -31,6 +31,8 @@ public class QuestionController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init();
 
+        TopicDAOImpl topicDAO = TopicDAOImpl.getInstance();
+
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
@@ -38,9 +40,10 @@ public class QuestionController extends HttpServlet {
 
         if (idStr != null) {
             int id = Integer.parseInt(idStr);
-            context.setVariable("question", questionDAO.find(id));
+            context.setVariable("topic", topicDAO.find(id));
+            context.setVariable("questions", questionDAO.findAllQuestionByTopic(id));
         }
 
-        engine.process("question.html", context, resp.getWriter());
+        engine.process("topic.html", context, resp.getWriter());
     }
 }

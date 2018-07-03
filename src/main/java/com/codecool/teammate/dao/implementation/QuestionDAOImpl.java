@@ -45,7 +45,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 
     @Override
     public List<Question> findAllQuestionByTopic(int id){
-        Query query = em.createQuery("SELECT t.questions FROM Topic t WHERE t.id = ?");
+        Query query = em.createQuery("SELECT q FROM Question q WHERE q.topic.id = ?");
         query.setParameter(0, id);
         List<Question> resultList = query.getResultList();
         return resultList;
