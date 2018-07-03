@@ -21,19 +21,13 @@ public class ExampleTeamMate {
         Topic javal = new Topic ("Java language");
         Topic javae= new Topic ("Java enterprise");
 
-        List<Topic> topics2 = new ArrayList<>();
-        topics2.add(oop);
-        topics2.add(javal);
-        Question question2 = new Question("Question belongs to multiple topics. What is it?",topics2);
-
-        Question question1 = new Question("Test Title1");
+        Question question1 = new Question("Test Title1", oop);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(question1);
         em.persist(oop);
         em.persist(javal);
         em.persist(javae);
-        em.persist(question2);
         transaction.commit();
         System.out.println("Question 1 saved.");
     }
