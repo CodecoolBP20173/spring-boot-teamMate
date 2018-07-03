@@ -1,10 +1,7 @@
 package com.codecool.teammate.config;
 
 import com.codecool.teammate.dao.ReviewDAO;
-import com.codecool.teammate.dao.implementation.AnswerDAOImpl;
-import com.codecool.teammate.dao.implementation.CustomerDAOImpl;
-import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
-import com.codecool.teammate.dao.implementation.ReviewDAOImpl;
+import com.codecool.teammate.dao.implementation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,6 +17,7 @@ public class DAOInit {
     AnswerDAOImpl answerDAO = new AnswerDAOImpl(em);
     CustomerDAOImpl customerDAO = new CustomerDAOImpl(em);
     ReviewDAOImpl reviewDAO = new ReviewDAOImpl(em);
+    TopicDAOImpl topicDAO = new TopicDAOImpl(em);
 
     public DAOInit() {
     }
@@ -31,4 +29,6 @@ public class DAOInit {
     public CustomerDAOImpl getCustomerDAO() { return customerDAO; }
 
     public ReviewDAOImpl getReviewDAO() { return reviewDAO; }
+
+    public TopicDAOImpl getTopicDAO() { return topicDAO; }
 }
