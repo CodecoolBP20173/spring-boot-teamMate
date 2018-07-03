@@ -1,5 +1,7 @@
 package com.codecool.teammate.controller;
 
+import com.codecool.teammate.config.DAOInit;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -14,5 +16,8 @@ public class InitializationServlet extends HttpServlet
         getServletContext().setAttribute("indexServlet", indexServlet);
         getServletContext().setAttribute("questionServlet", questionServlet);
         getServletContext().setAttribute("topicServlet", topicServlet);
+
+        DAOInit daoInit = new DAOInit();
+        daoInit.start();
     }
 }
