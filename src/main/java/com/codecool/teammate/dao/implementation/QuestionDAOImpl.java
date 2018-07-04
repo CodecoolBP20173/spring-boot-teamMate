@@ -51,14 +51,14 @@ public class QuestionDAOImpl implements QuestionDAO {
         String[] split = string.toLowerCase().split(" ");
 
         StringBuilder queryString = new StringBuilder("SELECT q FROM Question q WHERE");
-        for (String item : split){
+        for (int i = 0; i < split.length; i++) {
             queryString.append(" LOWER (q.title) LIKE '%");
-            queryString.append(item);
-            queryString.append("%' AND");
+            queryString.append(split[i]);
+            queryString.append("%'");
+            if (i != split.length - 1) {
+                queryString.append(" AND");
+            }
         }
-        queryString.deleteCharAt(queryString.length()-1);
-        queryString.deleteCharAt(queryString.length()-1);
-        queryString.deleteCharAt(queryString.length()-1);
 
         Query query = em.createQuery(String.valueOf(queryString));
 
