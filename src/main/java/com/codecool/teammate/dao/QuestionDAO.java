@@ -10,7 +10,7 @@ public interface QuestionDAO {
     Question find(int id);
     void remove(int id);
 
-
     List<Question> findAllQuestion();
     List<Question> findAllQuestionByTopic(int id);
+    List<Question> findAllQuestionBySubstring(String string);
 }

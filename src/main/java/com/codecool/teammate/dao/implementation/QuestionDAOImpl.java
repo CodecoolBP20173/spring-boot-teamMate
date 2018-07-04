@@ -45,4 +45,23 @@ public class QuestionDAOImpl implements QuestionDAO {
         List<Question> resultList = query.getResultList();
         return resultList;
     }
+
+    @Override
+    public List<Question> findAllQuestionBySubstring(String string) {
+        String[] split = string.split(" ");
+
+        StringBuilder queryString = new StringBuilder("SELECT q FROM Question q WHERE");
+        for (String item : split){
+            queryString.append(" q.title LIKE ? ");
+            queryString.append(item);
+            queryString.append(" AND");
+        }
+        queryString.reverse();
+
+        Query query = em.createQuery(String.valueOf(queryString));
+
+        List<Question> resultList = query.getResultList();
+
+        return resultList;
+    }
 }
