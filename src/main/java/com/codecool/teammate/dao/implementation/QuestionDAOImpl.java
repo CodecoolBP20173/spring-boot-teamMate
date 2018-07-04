@@ -52,11 +52,13 @@ public class QuestionDAOImpl implements QuestionDAO {
 
         StringBuilder queryString = new StringBuilder("SELECT q FROM Question q WHERE");
         for (String item : split){
-            queryString.append(" q.title LIKE ? ");
+            queryString.append(" q.title LIKE '%");
             queryString.append(item);
-            queryString.append(" AND");
+            queryString.append("%' AND");
         }
-        queryString.reverse();
+        queryString.deleteCharAt(queryString.length()-1);
+        queryString.deleteCharAt(queryString.length()-1);
+        queryString.deleteCharAt(queryString.length()-1);
 
         Query query = em.createQuery(String.valueOf(queryString));
 
