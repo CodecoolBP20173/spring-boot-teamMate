@@ -21,7 +21,7 @@
         <th:block th:each="topic : ${topics}">
             <a th:href="@{/topics(id=${topic.getId()})}"
                th:text="${topic.getName()}"
-               class="list-group-item list-group-item-action disabled">Topic name</a>
+               class="list-group-item list-group-item-action">Topic name</a>
         </th:block>
     </div>
 
@@ -31,7 +31,7 @@
     <th:block th:each="question : ${searched_questions}">
         <a th:href="@{/questions(id=${question.getId()})}"
            th:text="${question.getTitle()}"
-           class="list-group-item list-group-item-action disabled">Question title</a>
+           class="list-group-item list-group-item-action">Question title</a>
     </th:block>
 </div>
 </body>

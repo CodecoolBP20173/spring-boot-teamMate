@@ -21,7 +21,7 @@
             <th:block th:each="question : ${questions}">
                 <a th:href="@{/questions(id=${question.getId()})}"
                    th:text="${question.getTitle()}"
-                   class="list-group-item list-group-item-action disabled">Question name</a>
+                   class="list-group-item list-group-item-action">Question name</a>
             </th:block>
         </div>
     </div>
