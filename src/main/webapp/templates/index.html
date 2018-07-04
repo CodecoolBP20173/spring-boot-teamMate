@@ -17,7 +17,9 @@
 <div th:replace="navbar.html :: copy"></div>
 
 <div class="container">
-    <div class="list-group">
+    <h2 th:inline="text">Searched words: "[[${searched_string}]]"</h2>
+
+    <div class="list-group" th:if="${searched_questions} == null">
         <th:block th:each="topic : ${topics}">
             <a th:href="@{/topics(id=${topic.getId()})}"
                th:text="${topic.getName()}"
@@ -25,13 +27,23 @@
         </th:block>
     </div>
 
-</div>
+    <th:block th:if="${searched_questions} != null">
+        <th:block th:each="topic : ${topics}">
+            <div class="well well-sm">
+                <a th:href="@{/topics(id=${topic.getId()})}">
+                    <strong th:text="${topic.getName()}">Topic Name</strong>
+                </a>
+            </div>
 
-<div class="list-group">
-    <th:block th:each="question : ${searched_questions}">
-        <a th:href="@{/questions(id=${question.getId()})}"
-           th:text="${question.getTitle()}"
-           class="list-group-item list-group-item-action">Question title</a>
+            <div class="list-group">
+                <th:block th:each="question : ${searched_questions}">
+                    <a th:href="@{/questions(id=${question.getId()})}"
+                       th:if="${question.getTopic()} == ${topic}"
+                       th:text="${question.getTitle()}"
+                       class="list-group-item list-group-item-action">Question title</a>
+                </th:block>
+            </div>
+        </th:block>
     </th:block>
 </div>
 </body>
