@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DAOInit {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-    private static EntityManager em = emf.createEntityManager();
-
+    private EntityManager em = EntityManagerUtil.getEm();
     private HashMap<String, Object> daoHashMap = new HashMap<>();
 
     public DAOInit() {}
