@@ -23,10 +23,16 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-         WebContext context = new WebContext(req, resp, req.getServletContext());
-         context.setVariable("searched_questions", questionDAO.findAllQuestionBySubstring("What"));
-         context.setVariable("topics", topicDAO.findAllTopic());
-         engine.process("index.html", context, resp.getWriter());
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+        WebContext context = new WebContext(req, resp, req.getServletContext());
+        // Get Parameters From The Request
+        String searchedString = req.getParameter("searched_string");
+        System.out.println(searchedString);
+        if (searchedString != null) {
+            context.setVariable("searched_questions", questionDAO.findAllQuestionBySubstring(searchedString));
+        } else {
+            context.setVariable("topics", topicDAO.findAllTopic());
+        }
+        engine.process("index.html", context, resp.getWriter());
     }
 }

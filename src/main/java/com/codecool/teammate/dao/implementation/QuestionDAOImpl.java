@@ -48,11 +48,11 @@ public class QuestionDAOImpl implements QuestionDAO {
 
     @Override
     public List<Question> findAllQuestionBySubstring(String string) {
-        String[] split = string.split(" ");
+        String[] split = string.toLowerCase().split(" ");
 
         StringBuilder queryString = new StringBuilder("SELECT q FROM Question q WHERE");
         for (String item : split){
-            queryString.append(" q.title LIKE '%");
+            queryString.append(" LOWER (q.title) LIKE '%");
             queryString.append(item);
             queryString.append("%' AND");
         }
