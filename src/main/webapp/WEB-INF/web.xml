@@ -4,6 +4,11 @@
          version="3.1">
     <display-name>TeamMate Application</display-name>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>InitializationServlet</servlet-name>
         <servlet-class>com.codecool.teammate.controller.InitializationServlet</servlet-class>
