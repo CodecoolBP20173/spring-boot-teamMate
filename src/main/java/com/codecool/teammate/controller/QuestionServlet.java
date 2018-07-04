@@ -29,8 +29,6 @@ public class QuestionServlet extends HttpServlet {
             context.setVariable("question", questionDAO.find(id));
         }
 
-        context.setVariable("searched_questions", questionDAO.findAllQuestionBySubstring("What"));
-
         engine.process("question.html", context, resp.getWriter());
     }
 }
