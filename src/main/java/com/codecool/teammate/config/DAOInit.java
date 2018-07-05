@@ -3,8 +3,6 @@ package com.codecool.teammate.config;
 import com.codecool.teammate.dao.implementation.*;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.http.HttpServlet;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -12,9 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DAOInit {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("teammatePU");
-    private static EntityManager em = emf.createEntityManager();
-
+    private EntityManager em = EntityManagerUtil.getEm();
     private HashMap<String, Object> daoHashMap = new HashMap<>();
 
     public DAOInit() {}

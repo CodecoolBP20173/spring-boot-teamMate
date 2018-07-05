@@ -1,7 +1,6 @@
 package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.QuestionDAO;
-import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
 
 import javax.persistence.EntityManager;
@@ -48,10 +47,23 @@ public class QuestionDAOImpl implements QuestionDAO {
     }
 
     @Override
-    public Answer findAnswerByQuestion(Question question) {
-        Query query = em.createQuery("SELECT answer FROM Question q WHERE q.id = ?");
-        query.setParameter(0, question.getId());
-        Answer result = (Answer)query.getSingleResult();
-        return result;
+    public List<Question> findAllQuestionBySubstring(String string) {
+        String[] split = string.toLowerCase().split(" ");
+
+        StringBuilder queryString = new StringBuilder("SELECT q FROM Question q WHERE");
+        for (int i = 0; i < split.length; i++) {
+            queryString.append(" LOWER (q.title) LIKE '%");
+            queryString.append(split[i]);
+            queryString.append("%'");
+            if (i != split.length - 1) {
+                queryString.append(" AND");
+            }
+        }
+
+        Query query = em.createQuery(String.valueOf(queryString));
+
+        List<Question> resultList = query.getResultList();
+
+        return resultList;
     }
 }
