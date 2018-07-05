@@ -40,18 +40,14 @@ public class QuestionServlet extends HttpServlet {
             int id = Integer.parseInt(idStr);
             Question question = questionDAO.find(id);
             context.setVariable("question", question);
-            Answer answer = question.getAnswer();
-            System.out.println(answer);
-            addAnswerToContext(context, question, answer);
-
-
-            context.setVariable("answer", "<b>KUTY</b>a");
+            addAnswerToContext(context, question);
         }
     }
 
-    private void addAnswerToContext(WebContext context, Question question, Answer answer) {
-        if (answer != null) {
-            context.setVariable("answer", question.getAnswer());
+    private void addAnswerToContext(WebContext context, Question question) {
+        if (question.getAnswer() != null) {
+            String answerFromDB = question.getAnswer().getDescription();
+            context.setVariable("answer_description", answerFromDB);
         }
     }
 
@@ -61,7 +57,7 @@ public class QuestionServlet extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         String answer_input = req.getParameter("answer_input");
-        System.out.println(answer_input);
+        System.out.println("this is the answer sent by html" +answer_input);
         String idStr = req.getParameter("question_id");
         System.out.println(idStr);
 
