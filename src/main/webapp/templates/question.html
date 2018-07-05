@@ -4,18 +4,21 @@
     <div th:replace="header.html :: copy"></div>
 </head>
 <body>
-<h1>TeamMate</h1>
+<div th:replace="navbar.html :: copy"></div>
 
 <div class="container">
     <h2 th:text="${question.getTitle()}">Question title</h2>
 
     <div class="form-group">
-        <form action="/questions" method="post">
-            <input type="hidden" th:value="${question}" th:name="question">
-            <label for="comment">Answer:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+        <form action="/questions" method="post" th:if= "${question.getAnswer()} == null">
+            <input type="hidden" th:value="${question.getId()}" th:name="question_id">
+            <label for="no_answer">Answer:</label>
+            <textarea class="form-control" rows="5" id = "no_answer" name="answer_input"></textarea>
             <button>Submit</button>
         </form>
+        <p th:value="${question.getAnswer()}"></p>
+        <textarea class="form-control" rows="5" id = "answer_exist"  th:if= "${question.getAnswer()} != null" th:placeholder="${question.getAnswer().getDescription()}" ></textarea>
+
 
     </div>
 
