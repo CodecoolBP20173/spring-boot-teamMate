@@ -22,41 +22,6 @@ public class QuestionServlet extends HttpServlet {
     @InjectDAO
     private AnswerDAOImpl answerDAO;
 
-/*    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-
-        String idStr = req.getParameter("id");
-
-        if (idStr != null) {
-            int id = Integer.parseInt(idStr);
-            Question question = questionDAO.find(id);
-            context.setVariable("question", question);
-            Answer answer = question.getAnswer();
-            addAnswerToContext(context, question, answer);
-
-
-            context.setVariable("answer", "<b>KUTY</b>a");
-        }
-
-        engine.process("question.html", context, resp.getWriter());
-    }
-
-    private void addAnswerToContext(WebContext context, Question question, Answer answer) {
-        if (answer != null) {
-            context.setVariable("answer", question.getAnswer());
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-    }
-}*/
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
