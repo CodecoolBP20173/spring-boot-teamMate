@@ -1,34 +1,20 @@
 package com.codecool.teammate.controller;
 
-import com.codecool.teammate.config.TemplateEngineUtil;
-import com.codecool.teammate.config.ThymeleafConfig;
 import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
 import com.codecool.teammate.dao.implementation.TopicDAOImpl;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.TemplateSpec;
-import org.thymeleaf.context.IContext;
-import org.thymeleaf.context.WebContext;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
-import org.thymeleaf.templateresolver.StringTemplateResolver;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.util.Collections;
 
-import static org.junit.Assert.*;
 
 public class IndexServletTest extends Mockito {
 

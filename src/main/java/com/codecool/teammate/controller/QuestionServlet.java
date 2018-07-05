@@ -31,4 +31,8 @@ public class QuestionServlet extends HttpServlet {
 
         engine.process("question.html", context, resp.getWriter());
     }
+
+    public void setQuestionDAO(QuestionDAOImpl questionDAO) {
+        this.questionDAO = questionDAO;
+    }
 }
