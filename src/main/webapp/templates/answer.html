@@ -14,15 +14,15 @@
 <div class="container">
     <h2 th:text="${question.getTitle()}">Question title</h2>
 
-    <div class="form-group">
-        <form action="/questions" method="post">
-            <input type="hidden" th:value="${question}" th:name="question">
-            <label for="comment">Answer:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
-            <button>Submit</button>
-        </form>
+<div class="form-group">
+    <form action="/questions" method="post">
+        <input type="hidden" th:value="${question}" th:name="question">
+        <label for="comment">Answer:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+        <button>Submit</button>
+    </form>
 
-    </div>
+</div>
 
 </div>
 </body>
