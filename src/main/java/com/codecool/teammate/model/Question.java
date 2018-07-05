@@ -18,7 +18,7 @@ public class Question {
     @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Answer answer;
 
     private Date date;
@@ -105,11 +105,6 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", topic=" + topic +
-                ", answer=" + answer +
-                ", date=" + date +
-                ", customer=" + customer +
                 '}';
     }
 }

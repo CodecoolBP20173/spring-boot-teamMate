@@ -17,7 +17,7 @@ public class Answer {
     private List<Review> reviews = new ArrayList<>();
     @Temporal(TemporalType.DATE)
     private Date date;
-    @OneToOne
+    @OneToOne(mappedBy = "answer", cascade = CascadeType.ALL)
     private Question question;
     @OneToMany
     private List<Vote> votes = new ArrayList<>();
@@ -30,12 +30,14 @@ public class Answer {
         this.customer = customer;
         this.question = question;
         this.date = new Date();
+        question.setAnswer(this);
     }
 
     public Answer(String description, Question question) {
         this.description = description;
         this.question = question;
         this.date = new Date();
+        question.setAnswer(this);
     }
 
     public int getId() {
@@ -98,12 +100,6 @@ public class Answer {
     public String toString() {
         return "Answer{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
-                ", customer=" + customer +
-                ", reviews=" + reviews +
-                ", date=" + date +
-                ", question=" + question +
-                ", votes=" + votes +
                 '}';
     }
 }

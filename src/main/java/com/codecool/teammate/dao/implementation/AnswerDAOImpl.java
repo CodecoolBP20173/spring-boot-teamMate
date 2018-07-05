@@ -14,7 +14,11 @@ public class AnswerDAOImpl implements AnswerDAO {
     }
 
     @Override
-    public void add(Answer answer) { em.persist(answer); }
+    public void add(Answer answer) {
+        em.getTransaction().begin();
+        em.persist(answer);
+        em.getTransaction().commit();
+    }
 
     @Override
     public Answer find(int id) {
