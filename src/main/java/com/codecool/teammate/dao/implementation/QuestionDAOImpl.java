@@ -1,6 +1,7 @@
 package com.codecool.teammate.dao.implementation;
 
 import com.codecool.teammate.dao.QuestionDAO;
+import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
 
 import javax.persistence.EntityManager;
@@ -44,5 +45,13 @@ public class QuestionDAOImpl implements QuestionDAO {
         query.setParameter(0, id);
         List<Question> resultList = query.getResultList();
         return resultList;
+    }
+
+    @Override
+    public Answer findAnswerByQuestion(Question question) {
+        Query query = em.createQuery("SELECT answer FROM Question q WHERE q.id = ?");
+        query.setParameter(0, question.getId());
+        Answer result = (Answer)query.getSingleResult();
+        return result;
     }
 }
