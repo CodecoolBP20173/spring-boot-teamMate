@@ -43,6 +43,9 @@ public class QuestionServlet extends HttpServlet {
             Answer answer = question.getAnswer();
             System.out.println(answer);
             addAnswerToContext(context, question, answer);
+
+
+            context.setVariable("answer", "<b>KUTY</b>a");
         }
     }
 

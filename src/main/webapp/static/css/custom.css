@@ -5,3 +5,8 @@
     margin-right: auto;
     width: 60%;
 }
+
+#answer-editor{
+    border: 1px solid #ddd !important;
+    border-radius: 3px;
+}
