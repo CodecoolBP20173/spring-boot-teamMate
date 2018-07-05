@@ -18,7 +18,7 @@
             <input type="hidden" th:value="${question.getId()}" th:name="question_id">
 
             <label for="answer-editor">Answer:</label>
-            <div id="answer-editor" th: if th:utext="${answer_description}"></div>
+            <div id="answer-editor" th:utext="${answer_description}"></div>
 
             <input type="hidden" name="answer_input" id="html-output">
 
@@ -27,6 +27,19 @@
 
     </div>
 
-</div>
+    <!--<div class="form-group">
+        <form action="/questions" method="post">
+            <input type="hidden" th:value="${question.getId()}" th:name="question_id">
+
+            <label for="answer-editor">Answer:</label>
+            <div id="answer-editor" th: if th:utext="${answer_description}"></div>
+
+            <input type="hidden" name="answer_input" id="html-output">
+
+            <button>Submit</button>
+        </form>
+
+    </div>
+--></div>
 </body>
 </html>
