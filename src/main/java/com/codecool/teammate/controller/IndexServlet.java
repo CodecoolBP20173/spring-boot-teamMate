@@ -37,4 +37,8 @@ public class IndexServlet extends HttpServlet {
         context.setVariable("topics", topicDAO.findAllTopic());
         engine.process("index.html", context, resp.getWriter());
     }
+
+    public void setTopicDAO(TopicDAOImpl topicDAO) {
+        this.topicDAO = topicDAO;
+    }
 }
