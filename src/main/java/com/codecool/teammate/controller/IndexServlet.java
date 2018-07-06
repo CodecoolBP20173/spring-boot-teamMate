@@ -2,7 +2,7 @@ package com.codecool.teammate.controller;
 
 import com.codecool.teammate.config.InjectDAO;
 import com.codecool.teammate.config.TemplateEngineUtil;
-import com.codecool.teammate.dao.implementation.TopicDAOImpl;
+import com.codecool.teammate.dao.TopicDAO;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
 
     @InjectDAO
-    private TopicDAOImpl topicDAO;
+    private TopicDAO topicDAO;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

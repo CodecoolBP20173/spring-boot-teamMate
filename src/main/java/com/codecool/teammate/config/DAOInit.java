@@ -34,7 +34,7 @@ public class DAOInit {
     }
 
     private void addDAO(Object object) {
-        daoHashMap.put(object.getClass().getTypeName(), object);
+        daoHashMap.put(object.getClass().getInterfaces()[0].getName(), object);
     }
 
     private void injectDAOs(List<HttpServlet> servlets) {
