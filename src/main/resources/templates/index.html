@@ -11,13 +11,13 @@
     }
 </style>
 <div class="center">
-    <img src="static/images/4.png">
+    <!--<img src="/static/images/4.png">-->
 </div>
 
 <div th:replace="navbar.html :: copy"></div>
 
 <div class="container">
-    <h2 th:if="${searched_questions} != null" th:inline="text">Searched words: "[[${searched_string}]]"</h2>
+    <h2 th:if="${searched_string} != null" th:inline="text">Searched words: "[[${searched_string}]]"</h2>
 
     <div class="list-group" th:if="${searched_questions} == null">
         <th:block th:each="topic : ${topics}">
