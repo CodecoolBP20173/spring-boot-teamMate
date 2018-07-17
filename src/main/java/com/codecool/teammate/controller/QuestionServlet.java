@@ -1,3 +1,4 @@
+/*
 package com.codecool.teammate.controller;
 
 import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
@@ -74,3 +75,4 @@ public class QuestionServlet extends HttpServlet {
         this.questionDAO = questionDAO;
     }
 }
+*/
