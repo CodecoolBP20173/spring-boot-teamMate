@@ -1,7 +1,6 @@
 package com.codecool.teammate.controller;
 
 import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
-import com.codecool.teammate.dao.implementation.TopicDAOImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.thymeleaf.TemplateEngine;

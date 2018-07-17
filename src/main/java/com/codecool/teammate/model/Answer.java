@@ -96,6 +96,14 @@ public class Answer {
         this.votes = votes;
     }
 
+    public static Answer create(String description, Customer customer, Question question) {
+        return new Answer(description, customer, question);
+    }
+
+    public static Answer create(String description, Question question) {
+        return new Answer(description, question);
+    }
+
     @Override
     public String toString() {
         return "Answer{" +

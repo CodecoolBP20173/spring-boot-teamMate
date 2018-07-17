@@ -1,7 +1,5 @@
 package com.codecool.teammate.controller;
 
-import com.codecool.teammate.config.DAOInit;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.ArrayList;

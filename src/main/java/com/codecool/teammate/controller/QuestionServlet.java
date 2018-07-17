@@ -1,8 +1,5 @@
 package com.codecool.teammate.controller;
 
-import com.codecool.teammate.config.InjectDAO;
-import com.codecool.teammate.config.TemplateEngineUtil;
-import com.codecool.teammate.dao.implementation.AnswerDAOImpl;
 import com.codecool.teammate.dao.implementation.QuestionDAOImpl;
 import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
@@ -16,10 +13,8 @@ import java.io.IOException;
 
 public class QuestionServlet extends HttpServlet {
 
-    @InjectDAO
     private QuestionDAOImpl questionDAO;
 
-    @InjectDAO
     private AnswerDAOImpl answerDAO;
 
     @Override

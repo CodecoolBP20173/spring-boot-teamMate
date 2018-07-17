@@ -99,7 +99,21 @@ public class Question {
         this.customer = customer;
     }
 
+    public static Question create(String title, Topic topic, List<Tag> tags, Customer customer) {
+        return new Question(title, topic, tags, customer);
+    }
 
+    public static Question create(String title, Topic topic, Customer customer) {
+        return new Question(title, topic, customer);
+    }
+
+    public static Question create(String title, Topic topic) {
+        return new Question(title, topic);
+    }
+
+    public static Question create(String title) {
+        return new Question(title);
+    }
 
     @Override
     public String toString() {

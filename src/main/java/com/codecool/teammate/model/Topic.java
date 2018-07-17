@@ -45,6 +45,10 @@ public class Topic {
         this.questions = questions;
     }
 
+    public static Topic create(String name) {
+        return new Topic(name);
+    }
+
     @Override
     public String toString() {
         return "Topic{" +
