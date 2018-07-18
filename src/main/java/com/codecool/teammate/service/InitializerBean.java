@@ -40,15 +40,15 @@ import java.util.*;
                 String topicFilePath = (String) mentry.getValue();
                 topic = Topic.create(topicTitle);
                 topicRepository.save(topic);
-                addQuestions(questionRepository, topicFilePath);
+                addQuestions(questionRepository, topicFilePath, topic);
             }
         }
 
-        private void addQuestions(QuestionRepository questionRepository, String topicFilePath) {
+        private void addQuestions(QuestionRepository questionRepository, String topicFilePath, Topic topic) {
             try {
                 List<String> questions = readQuestions(topicFilePath);
                 for(String questionString: questions){
-                    questionRepository.save(Question.create(questionString));
+                    questionRepository.save(Question.create(questionString, topic));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
