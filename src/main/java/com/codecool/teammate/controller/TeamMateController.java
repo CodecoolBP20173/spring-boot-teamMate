@@ -19,13 +19,12 @@ public class TeamMateController {
     private QuestionRepository questionRepository;
 
     @GetMapping("/")
-    public String index(
-            @RequestParam("searched_string") String searchedString,
+    public String index(@RequestParam(value = "searched_string", required = false) String searchedString,
             ModelMap modelMap) {
 
         if (searchedString != null) {
-            modelMap.addAttribute("searched_string");
-            modelMap.addAttribute("searched_question", questionRepository.findQuestionsByTitleContaining(searchedString) );
+            modelMap.addAttribute("searched_string", searchedString);
+            modelMap.addAttribute("searched_questions", questionRepository.findQuestionsByTitleContaining(searchedString) );
         } else {
             modelMap.addAttribute("topics", topicRepository.findAll());
         }
