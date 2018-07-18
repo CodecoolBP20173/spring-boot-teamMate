@@ -27,6 +27,10 @@ import java.util.*;
             topics.put("Testing", "src/main/webapp/static/data_init/testing.txt");
             topics.put("Threads, Concurrency", "src/main/webapp/static/data_init/threads_concurrency.txt");
 
+            addTopicsAndQuestions(topicRepository, questionRepository, topics);
+        }
+
+        private void addTopicsAndQuestions(TopicRepository topicRepository, QuestionRepository questionRepository, HashMap<String, String> topics) {
             Set set = topics.entrySet();
             Iterator iterator = set.iterator();
             Topic topic;
@@ -36,27 +40,28 @@ import java.util.*;
                 String topicFilePath = (String) mentry.getValue();
                 topic = Topic.create(topicTitle);
                 topicRepository.save(topic);
-                try {
-                    List<String> questions = readQuestions(topicFilePath);
-                    for(String questionString: questions){
-                        questionRepository.save(Question.create(questionString));
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                addQuestions(questionRepository, topicFilePath);
+            }
+        }
+
+        private void addQuestions(QuestionRepository questionRepository, String topicFilePath) {
+            try {
+                List<String> questions = readQuestions(topicFilePath);
+                for(String questionString: questions){
+                    questionRepository.save(Question.create(questionString));
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
         private static List <String> readQuestions(String fileName) throws IOException { String fn = fileName;
             List<String> lines = new ArrayList<>();
-
             try (BufferedReader br = new BufferedReader(new FileReader(fn))) {
-
                 String line;
                 while ((line = br.readLine()) != null) {
                     lines.add(line);
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
