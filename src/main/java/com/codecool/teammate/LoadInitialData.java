@@ -26,7 +26,6 @@ public class LoadInitialData {
         topics.put("Software methodologies", "src/main/webapp/static/data_init/software_method.txt");
         topics.put("Testing", "src/main/webapp/static/data_init/testing.txt");
         topics.put("Threads, Concurrency", "src/main/webapp/static/data_init/threads_concurrency.txt");
-
         populateDb(topics);
 
     }
