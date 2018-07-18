@@ -1,13 +1,13 @@
 package com.codecool.teammate.controller;
 
 
+import com.codecool.teammate.model.Topic;
 import com.codecool.teammate.repository.QuestionRepository;
 import com.codecool.teammate.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -29,5 +29,24 @@ public class TeamMateController {
             modelMap.addAttribute("topics", topicRepository.findAll());
         }
         return "index";
+    }
+
+    @RequestMapping(value = "/topics", method = RequestMethod.GET)
+    public String topics(
+            @RequestParam(value = "id", required = false) String idStr,
+            ModelMap modelMap) {
+
+        if (idStr != null) {
+            Integer id = Integer.parseInt(idStr);
+            Topic topic = topicRepository.findById(id);
+
+            if (topic != null) {
+                modelMap.addAttribute("topic", topic);
+                modelMap.addAttribute("questions", questionRepository.findAllByTopicId(id));
+
+                return "topic";
+            }
+        }
+        return "redirect:/";
     }
 }

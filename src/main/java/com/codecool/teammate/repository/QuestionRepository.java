@@ -2,6 +2,7 @@ package com.codecool.teammate.repository;
 
 import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
+import com.codecool.teammate.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -10,4 +11,5 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     List<Question> findQuestionsByTitleContaining(String searchedString);
+    List<Question> findAllByTopicId(int id);
 }
