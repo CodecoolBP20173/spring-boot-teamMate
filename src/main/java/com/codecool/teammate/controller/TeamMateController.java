@@ -1,8 +1,10 @@
 package com.codecool.teammate.controller;
 
 
+import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
 import com.codecool.teammate.model.Topic;
+import com.codecool.teammate.repository.AnswerRepository;
 import com.codecool.teammate.repository.QuestionRepository;
 import com.codecool.teammate.repository.TopicRepository;
 import com.sun.xml.internal.fastinfoset.util.CharArray;
@@ -23,9 +25,12 @@ public class TeamMateController {
     private TopicRepository topicRepository;
     @Autowired
     private QuestionRepository questionRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @GetMapping("/")
-    public String index(@RequestParam(value = "searched_string", required = false) String searchedString,
+    public String index
+            (@RequestParam(value = "searched_string", required = false) String searchedString,
             ModelMap modelMap) {
 
         modelMap.addAttribute("topics", topicRepository.findAll());
@@ -76,7 +81,9 @@ public class TeamMateController {
 
 
     @GetMapping("/questions")
-    public String question(@RequestParam("id") String idStr, ModelMap modelMap) {
+    public String question(
+            @RequestParam("id") String idStr,
+            ModelMap modelMap) {
         if (idStr != null && !idStr.equals("")) {
             Integer id = Integer.parseInt(idStr);
             Question question = questionRepository.findById(id);
@@ -93,6 +100,19 @@ public class TeamMateController {
             }
         }
         return "redirect:/topic";
+    }
 
+    @PostMapping("/questions")
+    public String saveAnswer
+            (@RequestParam("answer_input") String answerInput,
+             @RequestParam("question_id") String idStr,
+             ModelMap modelMap) {
+        if (idStr != null) {
+            int question_id = Integer.parseInt(idStr);
+            Question question = questionRepository.findById(question_id);
+            answerRepository.save(Answer.create(answerInput,question));
+        }
+        modelMap.addAttribute("id", idStr);
+        return "question";
     }
 }
