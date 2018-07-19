@@ -17,15 +17,15 @@ import java.util.*;
         public InitializerBean(TopicRepository topicRepository, QuestionRepository questionRepository) {
 
             HashMap<String, String> topics = new HashMap<String, String>();
-            topics.put("OOP / General", "src/main/webapp/static/data_init/algorithms.txt");
-            topics.put("Java language", "src/main/webapp/static/data_init/java_l.txt");
-            topics.put("Java enterprise", "src/main/webapp/static/data_init/java_ee.txt");
-            topics.put("Databases", "src/main/webapp/static/data_init/databases.txt");
-            topics.put("Algorithms, Pseudo code", "src/main/webapp/static/data_init/algorithms.txt");
-            topics.put("Networks, HTTP, Web technologies", "src/main/webapp/static/data_init/netw_http_web.txt");
-            topics.put("Software methodologies", "src/main/webapp/static/data_init/software_method.txt");
-            topics.put("Testing", "src/main/webapp/static/data_init/testing.txt");
-            topics.put("Threads, Concurrency", "src/main/webapp/static/data_init/threads_concurrency.txt");
+            topics.put("OOP / General", "src/main/resources/static/data_init/algorithms.txt");
+            topics.put("Java language", "src/main/resources/static/data_init/java_l.txt");
+            topics.put("Java enterprise", "src/main/resources/static/data_init/java_ee.txt");
+            topics.put("Databases", "src/main/resources/static/data_init/databases.txt");
+            topics.put("Algorithms, Pseudo code", "src/main/resources/static/data_init/algorithms.txt");
+            topics.put("Networks, HTTP, Web technologies", "src/main/resources/static/data_init/netw_http_web.txt");
+            topics.put("Software methodologies", "src/main/resources/static/data_init/software_method.txt");
+            topics.put("Testing", "src/main/resources/static/data_init/testing.txt");
+            topics.put("Threads, Concurrency", "src/main/resources/static/data_init/threads_concurrency.txt");
 
             addTopicsAndQuestions(topicRepository, questionRepository, topics);
         }
