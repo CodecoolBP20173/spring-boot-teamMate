@@ -13,13 +13,13 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a th:text="${topic.getName()}">Topic name</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a th:text="${topic.getName()}" th:href="@{/topics/{id}(id=${topic.getId()})}">Topic name</a></li>
             </ol>
         </nav>
 
         <div class="list-group">
             <th:block th:each="question : ${questions}">
-                <a th:href="@{/questions(id=${question.getId()})}"
+                <a th:href="@{/questions/{id}(id=${question.getId()})}"
                    th:text="${question.getTitle()}"
                    class="list-group-item list-group-item-action">Question name</a>
             </th:block>

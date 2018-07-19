@@ -4,6 +4,6 @@ document.getElementById('answer-editor').innerHTML = '';
 pell.init({
     element: document.getElementById('answer-editor'),
     onChange: html => {
-        document.getElementById('html-output').textContent = html
+        document.getElementById('html-output').value = html
     },
 }).content.innerHTML = originalAnswer;
