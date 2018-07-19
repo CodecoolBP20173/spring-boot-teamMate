@@ -7,7 +7,6 @@ import com.codecool.teammate.model.Topic;
 import com.codecool.teammate.repository.AnswerRepository;
 import com.codecool.teammate.repository.QuestionRepository;
 import com.codecool.teammate.repository.TopicRepository;
-import com.sun.xml.internal.fastinfoset.util.CharArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -66,7 +64,8 @@ public class TeamMateController {
             @RequestParam(value = "id", required = false) String idStr,
             ModelMap modelMap) {
 
-        if (idStr != null && !idStr.equals("")) {
+        String regex = "\\d+";
+        if (idStr != null && idStr.matches(regex)) {
             Integer id = Integer.parseInt(idStr);
             Topic topic = topicRepository.findById(id);
 
@@ -85,7 +84,9 @@ public class TeamMateController {
     public String question(
             @RequestParam("id") String idStr,
             ModelMap modelMap) {
-        if (idStr != null && !idStr.equals("")) {
+
+        String regex = "\\d+";
+        if (idStr != null && idStr.matches(regex)) {
             Integer id = Integer.parseInt(idStr);
             Question question = questionRepository.findById(id);
             modelMap.addAttribute("id", idStr);
@@ -97,10 +98,10 @@ public class TeamMateController {
                     modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
                 }
 
-                return "question";
+                return "edit_question";
             }
         }
-        return "redirect:/topic";
+        return "redirect:/topics";
     }
 
     @PostMapping("/questions")
@@ -108,10 +109,12 @@ public class TeamMateController {
             (@RequestParam("answer_input") String answerInput,
              @RequestParam("question_id") String idStr,
              RedirectAttributes redirectAttributes) {
-        System.out.println(answerInput + "this is the answer");
-        if (idStr != null && !idStr.equals("")) {
+
+        String regex = "\\d+";
+        if (idStr != null && idStr.matches(regex)) {
             int question_id = Integer.parseInt(idStr);
             Question question = questionRepository.findById(question_id);
+            
             if (question.getAnswer()== null) {
                 answerRepository.save(Answer.create(answerInput,question));
             } else {
