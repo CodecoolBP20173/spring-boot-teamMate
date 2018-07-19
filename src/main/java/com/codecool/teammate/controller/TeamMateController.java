@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -106,13 +107,21 @@ public class TeamMateController {
     public String saveAnswer
             (@RequestParam("answer_input") String answerInput,
              @RequestParam("question_id") String idStr,
-             ModelMap modelMap) {
-        if (idStr != null) {
+             RedirectAttributes redirectAttributes) {
+        System.out.println(answerInput + "this is the answer");
+        if (idStr != null && !idStr.equals("")) {
             int question_id = Integer.parseInt(idStr);
             Question question = questionRepository.findById(question_id);
-            answerRepository.save(Answer.create(answerInput,question));
+            if (question.getAnswer()== null) {
+                answerRepository.save(Answer.create(answerInput,question));
+            } else {
+                Answer answer = question.getAnswer();
+                answer.setDescription(answerInput);
+                answerRepository.save(answer);
+            }
+
+            redirectAttributes.addAttribute("id", idStr);
         }
-        modelMap.addAttribute("id", idStr);
-        return "question";
+        return "redirect:/questions";
     }
 }
