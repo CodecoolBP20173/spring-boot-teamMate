@@ -60,9 +60,9 @@ public class TeamMateController {
         return "index";
     }
 
-    @RequestMapping(value = "/topics", method = RequestMethod.GET)
+    @RequestMapping(value = "/topics/{id}", method = RequestMethod.GET)
     public String topics(
-            @RequestParam(value = "id", required = false) String idStr,
+            @PathVariable(value = "id", required = false) String idStr,
             ModelMap modelMap) {
 
         String regex = "\\d+";
