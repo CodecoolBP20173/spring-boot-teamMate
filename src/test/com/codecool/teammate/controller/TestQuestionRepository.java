@@ -1,5 +1,6 @@
 package com.codecool.teammate.controller;
 
+import com.codecool.teammate.model.Question;
 import com.codecool.teammate.repository.QuestionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +22,8 @@ public class TestQuestionRepository {
         }
         @Test
         public void testSaveProduct(){
-            /*Test code*/
+            questionRepository.save(Question.create("Test question title1"));
         }
     }
 
-}
+
