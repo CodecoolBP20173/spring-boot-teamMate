@@ -92,8 +92,7 @@ public class TeamMateController {
             modelMap.addAttribute("id", idStr);
 
             if (question != null) {
-                modelMap.addAttribute("question_title", question.getTitle());
-                modelMap.addAttribute("question_id", question.getId());
+                modelMap.addAttribute("question", question);
                 if (question.getAnswer() != null){
                     modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
                 }
@@ -116,8 +115,7 @@ public class TeamMateController {
             modelMap.addAttribute("id", idStr);
 
             if (question != null) {
-                modelMap.addAttribute("question_title", question.getTitle());
-                modelMap.addAttribute("question_id", question.getId());
+                modelMap.addAttribute("question", question);
                 if (question.getAnswer() != null){
                     modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
                 }
