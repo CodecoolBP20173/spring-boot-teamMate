@@ -11,7 +11,8 @@ public class Topic {
     private int id;
     private String name;
 
-    @OneToMany
+
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Question> questions = new ArrayList<>();
 
     public Topic(String name) {
