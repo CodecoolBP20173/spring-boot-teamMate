@@ -37,7 +37,7 @@
 
             <div class="list-group">
                 <th:block th:each="question : ${searched_questions}">
-                    <a th:href="@{/questions(id=${question.getId()})}"
+                    <a th:href="@{/questions/{id}(id=${question.getId()})}"
                        th:if="${question.getTopic()} == ${topic}"
                        th:text="${question.getTitle()}"
                        class="list-group-item list-group-item-action">Question title</a>

@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,10 +80,33 @@ public class TeamMateController {
         return "redirect:/";
     }
 
-
-    @GetMapping("/questions")
+    @GetMapping("/questions/{id}")
     public String question(
-            @RequestParam("id") String idStr,
+            @PathVariable("id") String idStr,
+            ModelMap modelMap) {
+
+        String regex = "\\d+";
+        if (idStr != null && idStr.matches(regex)) {
+            Integer id = Integer.parseInt(idStr);
+            Question question = questionRepository.findById(id);
+            modelMap.addAttribute("id", idStr);
+
+            if (question != null) {
+                modelMap.addAttribute("question_title", question.getTitle());
+                modelMap.addAttribute("question_id", question.getId());
+                if (question.getAnswer() != null){
+                    modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
+                }
+
+                return "question";
+            }
+        }
+        return "redirect:/topics";
+    }
+
+    @GetMapping("/questions/{id}/edit")
+    public String editAnswer(
+            @PathVariable("id") String idStr,
             ModelMap modelMap) {
 
         String regex = "\\d+";
@@ -125,6 +149,6 @@ public class TeamMateController {
 
             redirectAttributes.addAttribute("id", idStr);
         }
-        return "redirect:/questions";
+        return "redirect:/questions/{id}";
     }
 }

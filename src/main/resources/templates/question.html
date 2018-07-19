@@ -13,18 +13,10 @@
 <div class="container">
     <h2 th:text="${question_title}">Question title</h2>
 
-    <div class="form-group">
-        <form action="/questions" method="post">
-            <input type="hidden" th:value="${question_id}" th:name="question_id">
+    <div class="content" th:utext="${answer_description}"></div>
 
-            <label for="answer-editor">Answer:</label>
-            <div id="answer-editor" th:utext="${answer_description}"></div>
+    <a th:href="@{/questions/{id}/edit(id=${question_id})}" class="btn btn-primary" role="button">Edit answer</a>
 
-            <input type="hidden" name="answer_input" id="html-output">
-
-            <button>Submit</button>
-        </form>
-    </div>
 </div>
 </body>
 </html>
