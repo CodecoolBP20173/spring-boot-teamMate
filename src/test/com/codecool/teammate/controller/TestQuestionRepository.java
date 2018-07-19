@@ -9,6 +9,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -23,6 +25,7 @@ public class TestQuestionRepository {
         @Test
         public void testSaveProduct(){
             questionRepository.save(Question.create("Test question title1"));
+            assertThat(questionRepository.findAllByTitleIgnoreCaseContaining("Test question title1"));
         }
     }
 
