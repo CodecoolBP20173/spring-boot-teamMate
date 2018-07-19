@@ -73,4 +73,26 @@ public class TeamMateController {
         }
         return "redirect:/";
     }
+
+
+    @GetMapping("/questions")
+    public String question(@RequestParam("id") String idStr, ModelMap modelMap) {
+        if (idStr != null && !idStr.equals("")) {
+            Integer id = Integer.parseInt(idStr);
+            Question question = questionRepository.findById(id);
+            modelMap.addAttribute("id", idStr);
+
+            if (question != null) {
+                modelMap.addAttribute("question_title", question.getTitle());
+                modelMap.addAttribute("question_id", question.getId());
+                if (question.getAnswer() != null){
+                    modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
+                }
+
+                return "question";
+            }
+        }
+        return "redirect:/topic";
+
+    }
 }
