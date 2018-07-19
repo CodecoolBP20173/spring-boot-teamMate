@@ -19,7 +19,7 @@
 <div class="container">
     <div class="list-group" th:if="${searched_questions} == null">
         <th:block th:each="topic : ${topics}">
-            <a th:href="@{/topics(id=${topic.getId()})}"
+            <a th:href="@{/topics/{id}(id=${topic.getId()})}"
                th:text="${topic.getName()}"
                class="list-group-item list-group-item-action">Topic name</a>
         </th:block>
@@ -30,7 +30,7 @@
 
         <th:block th:each="topic : ${topics}">
             <div class="well well-sm">
-                <a th:href="@{/topics(id=${topic.getId()})}">
+                <a th:href="@{/topics/{id}(id=${topic.getId()})}">
                     <strong th:text="${topic.getName()}">Topic Name</strong>
                 </a>
             </div>

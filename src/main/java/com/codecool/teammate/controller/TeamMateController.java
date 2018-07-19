@@ -60,9 +60,9 @@ public class TeamMateController {
         return "index";
     }
 
-    @RequestMapping(value = "/topics", method = RequestMethod.GET)
+    @RequestMapping(value = "/topics/{id}", method = RequestMethod.GET)
     public String topics(
-            @RequestParam(value = "id", required = false) String idStr,
+            @PathVariable(value = "id", required = false) String idStr,
             ModelMap modelMap) {
 
         String regex = "\\d+";
@@ -92,8 +92,7 @@ public class TeamMateController {
             modelMap.addAttribute("id", idStr);
 
             if (question != null) {
-                modelMap.addAttribute("question_title", question.getTitle());
-                modelMap.addAttribute("question_id", question.getId());
+                modelMap.addAttribute("question", question);
                 if (question.getAnswer() != null){
                     modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
                 }
@@ -116,8 +115,7 @@ public class TeamMateController {
             modelMap.addAttribute("id", idStr);
 
             if (question != null) {
-                modelMap.addAttribute("question_title", question.getTitle());
-                modelMap.addAttribute("question_id", question.getId());
+                modelMap.addAttribute("question", question);
                 if (question.getAnswer() != null){
                     modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
                 }

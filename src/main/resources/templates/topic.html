@@ -13,7 +13,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a th:text="${topic.getName()}">Topic name</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a th:text="${topic.getName()}" th:href="@{/topics/{id}(id=${topic.getId()})}">Topic name</a></li>
             </ol>
         </nav>
 

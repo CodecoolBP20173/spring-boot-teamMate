@@ -2,20 +2,26 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="header.html :: copy"></div>
-    <link rel="stylesheet" href="/static/css/pell.min.css">
-    <script type="application/javascript" defer src="/static/js/pell.min.js"></script>
-    <script type="application/javascript" defer src="/static/js/question.js"></script>
 </head>
 <body>
 
 <div th:replace="navbar.html :: copy"></div>
 
 <div class="container">
-    <h2 th:text="${question_title}">Question title</h2>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a th:text="${question.getTopic().getName()}" th:href="@{/topics/{id}(id=${question.getTopic().getId()})}">Topic name</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:text="${question.getTitle()}" th:href="@{/questions/{id}(id=${question.getId()})}">Question name</a></li>
+        </ol>
+    </nav>
+
+    <h2 th:text="${question.getTitle()}">Question title</h2>
 
     <div class="content" th:utext="${answer_description}"></div>
 
-    <a th:href="@{/questions/{id}/edit(id=${question_id})}" class="btn btn-primary" role="button">Edit answer</a>
+    <a th:href="@{/questions/{id}/edit(id=${question.getId()})}" class="btn btn-primary" role="button">Edit answer</a>
 
 </div>
 </body>
