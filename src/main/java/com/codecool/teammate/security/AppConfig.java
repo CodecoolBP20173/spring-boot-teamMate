@@ -22,19 +22,19 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     /**
      * This is your auth0 domain (tenant you have created when registering with auth0 - account name)
      */
-    @Value(value = "${com.auth0.domain}")
+    @Value(value = "${com.codecool.teammate.domain}")
     private String domain;
 
     /**
      * This is the client id of your auth0 application (see Settings page on auth0 dashboard)
      */
-    @Value(value = "${com.auth0.clientId}")
+    @Value(value = "${com.codecool.teammate.clientId}")
     private String clientId;
 
     /**
      * This is the client secret of your auth0 application (see Settings page on auth0 dashboard)
      */
-    @Value(value = "${com.auth0.clientSecret}")
+    @Value(value = "${com.codecool.teammate.clientSecret}")
     private String clientSecret;
 
 /*    @Bean
