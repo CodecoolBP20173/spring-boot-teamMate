@@ -37,7 +37,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     @Value(value = "${com.auth0.clientSecret}")
     private String clientSecret;
 
-    @Bean
+/*    @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver
                 = new InternalResourceViewResolver();
@@ -45,7 +45,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
-    }
+    }*/
 
     @Bean
     public AuthenticationController authenticationController() throws UnsupportedEncodingException {
