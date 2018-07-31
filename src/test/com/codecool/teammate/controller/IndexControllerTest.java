@@ -47,10 +47,10 @@ class DataSourceSetup {
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TeamMateControllerTest {
+public class IndexControllerTest {
 
     @Autowired
-    private TeamMateController teamMateController;
+    private IndexController indexController;
     @Autowired
     private QuestionRepository questionRepository;
     @Autowired
@@ -60,7 +60,7 @@ public class TeamMateControllerTest {
 
     @BeforeEach
     public void setup() {
-        teamMateController = new TeamMateController();
+        indexController = new IndexController();
         topicRepository.deleteAll();
         questionRepository.deleteAll();
         topicRepository.save(Topic.create("Topic1"));
