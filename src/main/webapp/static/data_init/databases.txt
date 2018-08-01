@@ -1,4 +1,3 @@
-Databases
 How can you connect your application to a database server? What are the possible ways?
 When do you use the DISTINCT keyword in SQL?
 What are aggregate functions in SQL? Give 3 examples.
