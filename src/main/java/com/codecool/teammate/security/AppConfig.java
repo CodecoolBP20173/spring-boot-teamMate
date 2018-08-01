@@ -4,6 +4,7 @@ import com.auth0.AuthenticationController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,22 +19,26 @@ import java.io.UnsupportedEncodingException;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@PropertySource(value = {"classpath:auth0.properties"})
 public class AppConfig extends WebSecurityConfigurerAdapter {
     /**
      * This is your auth0 domain (tenant you have created when registering with auth0 - account name)
      */
-    private String domain ="teammate.eu.auth0.com";
+    @Value(value = "${com.codecool.domain}")
+    private String domain;
 
     /**
      * This is the client id of your auth0 application (see Settings page on auth0 dashboard)
      */
-    private String clientId = "sKU7nNOnxFSWQ24QLBkUcSmELRv6iBgm";
+    @Value(value = "${com.codecool.clientId}")
+    private String clientId;
 
     /**
      * This is the client secret of your auth0 application (see Settings page on auth0 dashboard)
      */
+    @Value(value = "${com.codecool.clientSecret}")
+    private String clientSecret;
 
-    private String clientSecret = "VkG94fbC8K0Om44oUx5RYHTJFtD_mNLa7u1ea7Gjw4lBZL2uYRI0W5UXR1GD5-Bs";
 
 /*    @Bean
     public InternalResourceViewResolver viewResolver() {
