@@ -21,11 +21,7 @@ import java.util.List;
 public class QuestionController {
 
     @Autowired
-    private TopicRepository topicRepository;
-    @Autowired
     private QuestionRepository questionRepository;
-    @Autowired
-    private AnswerRepository answerRepository;
 
     @GetMapping("/questions/{id}")
     public String question(

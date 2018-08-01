@@ -18,7 +18,7 @@ public class Review {
     public Review() {
     }
 
-    public Review(Answer answer, Customer customer, String description) {
+    public Review(String description, Question question, Answer answer) {
         this.answer = answer;
         this.customer = customer;
         this.description = description;
@@ -55,6 +55,10 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public static Review create(String description, Question question, Answer answer) {
+        return new Review(description, question, answer);
     }
 
     @Override

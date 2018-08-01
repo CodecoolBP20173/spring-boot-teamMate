@@ -25,19 +25,17 @@
     </nav>
 
     <h2 th:text="${question.getTitle()}">Question title</h2>
+    <div class="content" th:utext="${answer_description}"></div>
 
     <div class="form-group">
-        <form action="/questions" method="post">
+        <form action="/review" method="post">
             <input type="hidden" th:value="${question.getId()}" th:name="question_id">
 
-            <label for="answer-editor">Answer:</label>
-            <div id="answer-editor" th:utext="${answer_description}"></div>
-
-            <input type="hidden" name="answer_input" id="html-output">
-
+            <label for="review-output">Review:</label>
+            <textarea rows="4" cols="50" th:utext="${review_description}"></textarea>
+            <input type="hidden" name="review_input" id="review-output">
             <button class="btn btn-primary">Submit</button>
         </form>
     </div>
-</div>
 </body>
 </html>

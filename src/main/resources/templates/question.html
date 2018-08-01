@@ -20,8 +20,10 @@
     <h2 th:text="${question.getTitle()}">Question title</h2>
 
     <div class="content" th:utext="${answer_description}"></div>
+    <div class="content" th:utext="${review_description}"></div>
 
     <a th:href="@{/questions/{id}/edit(id=${question.getId()})}" class="btn btn-primary" role="button">Edit answer</a>
+    <a th:href="@{/questions/{id}/review(id=${question.getId()})}" class="btn btn-primary" role="button">Add review</a>
 
 </div>
 </body>

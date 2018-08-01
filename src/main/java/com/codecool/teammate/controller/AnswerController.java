@@ -21,8 +21,6 @@ import java.util.List;
 public class AnswerController {
 
     @Autowired
-    private TopicRepository topicRepository;
-    @Autowired
     private QuestionRepository questionRepository;
     @Autowired
     private AnswerRepository answerRepository;

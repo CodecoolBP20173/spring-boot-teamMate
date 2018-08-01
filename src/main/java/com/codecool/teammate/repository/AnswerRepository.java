@@ -8,6 +8,8 @@ import java.util.List;
 // This is how you define basic CRUD operations on the Customer entity
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
+    Answer findById(int id);
+
 //    List<Answer> findByTitle(String title);
 //    Todo -> refactor
 
