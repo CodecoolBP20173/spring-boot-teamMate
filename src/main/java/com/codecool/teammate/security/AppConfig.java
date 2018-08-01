@@ -57,7 +57,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/callback", "/login").permitAll()
+                .antMatchers("/callback", "/login","/").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .logout().permitAll();

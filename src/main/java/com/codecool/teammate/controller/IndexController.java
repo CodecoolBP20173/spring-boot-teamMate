@@ -48,7 +48,7 @@ public class IndexController {
              ModelMap modelMap, final Principal principal) {
 
         if (principal == null) {
-            return "redirect:/logout";
+            return "redirect:/login";
         }
 
         modelMap.addAttribute("topics", topicRepository.findAll());
