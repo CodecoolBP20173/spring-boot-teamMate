@@ -31,6 +31,11 @@
         <div class="list-group-item list-group-item" th:utext="${answer.getDescription()}"></div>
 
         <div class="content">
+            <div class="vote">
+                <a class="vote-up" th:href="@{/questions/{id}/vote/up(id=${question.getId()})}" title="This answer is useful"><i class="fas fa-arrow-circle-up"></i></a>
+                <a class="vote-down-off" th:href="@{/questions/{id}/vote/down(id=${question.getId()})}" title="This answer is not useful"><i class="fas fa-arrow-circle-down"></i></a>
+            </div>
+
             <a th:href="@{/questions/{id}/edit(id=${question.getId()})}"
                class="btn btn-primary" role="button">Edit answer</a>
 
