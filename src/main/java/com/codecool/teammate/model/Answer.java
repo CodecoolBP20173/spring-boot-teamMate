@@ -10,6 +10,7 @@ public class Answer {
     @Id
     @GeneratedValue
     private int id;
+    @Column(columnDefinition = "text")
     private String description;
     @ManyToOne
     private Customer customer;
@@ -19,7 +20,7 @@ public class Answer {
     private Date date;
     @OneToOne(mappedBy = "answer", cascade = CascadeType.ALL)
     private Question question;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();
 
     public Answer() {
