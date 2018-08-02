@@ -15,8 +15,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a th:text="${question.getTopic().getName()}" th:href="@{/topics/{id}(id=${question.getTopic().getId()})}">Topic name</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a th:text="${question.getTitle()}" th:href="@{/questions/{id}(id=${question.getId()})}">Question name</a></li>
+            <li class="breadcrumb-item"><a th:text="${question.getTopic().getName()}"
+                                           th:href="@{/topics/{id}(id=${question.getTopic().getId()})}">Topic name</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:text="${question.getTitle()}"
+                                                                      th:href="@{/questions/{id}(id=${question.getId()})}">Question
+                name</a></li>
         </ol>
     </nav>
 
