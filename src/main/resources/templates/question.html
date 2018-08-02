@@ -19,14 +19,39 @@
 
     <h2 th:text="${question.getTitle()}">Question title</h2>
 
-    <div class="content" th:if="${answer} != null" th:utext="${answer.getDescription()}"></div>
-    <th:block th:each="review : ${reviews}">
-        <p th:text="${review.getDescription()}"
-           class="list-group-item list-group-item-action">Review description</p>
+    <th:block th:if="${answer} == null">
+        <div class="content">
+            <a th:href="@{/questions/{id}/edit(id=${question.getId()})}"
+               class="btn btn-primary" role="button">Add answer</a>
+        </div>
     </th:block>
 
-    <a th:href="@{/questions/{id}/edit(id=${question.getId()})}" class="btn btn-primary" role="button">Edit answer</a>
-    <a th:href="@{/questions/{id}/review(id=${question.getId()})}" class="btn btn-primary" role="button">Add review</a>
+    <th:block th:if="${answer} != null">
+        <strong>Answer:</strong>
+        <div class="list-group-item list-group-item"
+             th:classappend="${up_votes > down_votes} ?
+                (${up_votes - down_votes >= (up_votes + down_votes) / 10 && up_votes + down_votes >= 5} ? 'list-group-item-success') :
+                (${down_votes - up_votes >= (up_votes + down_votes) / 10 && up_votes + down_votes >= 5} ? 'list-group-item-danger')"
+             th:utext="${answer.getDescription()}"></div>
+
+        <div class="content">
+            <strong th:text="${up_votes}"></strong>
+            <a class="vote-up" th:href="@{/questions/{id}/vote/up(id=${question.getId()})}" title="This answer is useful"><i class="fas fa-arrow-circle-up"></i></a>
+            <strong th:text="${down_votes}"></strong>
+            <a class="vote-down-off" th:href="@{/questions/{id}/vote/down(id=${question.getId()})}" title="This answer is not useful"><i class="fas fa-arrow-circle-down"></i></a>
+
+            <a th:href="@{/questions/{id}/edit(id=${question.getId()})}"
+               class="btn btn-primary" role="button">Edit answer</a>
+
+            <a th:href="@{/questions/{id}/review(id=${question.getId()})}"
+               class="btn btn-primary" role="button">Add review</a>
+        </div>
+
+        <strong>Reviews:</strong>
+        <div class="list-group-item list-group-item" th:each="review : ${reviews}">
+            <p th:text="${review.getDescription()}">Review description</p>
+        </div>
+    </th:block>
 
 </div>
 </body>

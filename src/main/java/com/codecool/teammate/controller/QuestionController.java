@@ -1,17 +1,18 @@
 package com.codecool.teammate.controller;
 
 
-import com.codecool.teammate.model.Answer;
-import com.codecool.teammate.model.Question;
-import com.codecool.teammate.model.Review;
+import com.codecool.teammate.model.*;
 import com.codecool.teammate.repository.QuestionRepository;
 import com.codecool.teammate.repository.ReviewRepository;
+import com.codecool.teammate.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 
 @Controller
@@ -22,6 +23,9 @@ public class QuestionController {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private VoteRepository voteRepository;
 
     @GetMapping("/questions/{id}")
     public String question(
@@ -38,9 +42,23 @@ public class QuestionController {
                 modelMap.addAttribute("question", question);
 
                 Answer answer = question.getAnswer();
-                modelMap.addAttribute("answer", answer);
-
                 if (answer != null) {
+                    modelMap.addAttribute("answer", answer);
+
+                    List<Vote> votes = voteRepository.findAllByAnswerId(answer.getId());
+
+                    int upVotes = (int) votes
+                            .stream()
+                            .filter(vote -> vote.getVoteType().equals(VoteType.UP))
+                            .count();
+                    int downVotes = (int) votes
+                            .stream()
+                            .filter(vote -> vote.getVoteType().equals(VoteType.DOWN))
+                            .count();
+
+                    modelMap.addAttribute("up_votes", upVotes);
+                    modelMap.addAttribute("down_votes", downVotes);
+
                     List<Review> reviews = reviewRepository.findAllByAnswerId(answer.getId());
                     modelMap.addAttribute("reviews", reviews);
                 }
