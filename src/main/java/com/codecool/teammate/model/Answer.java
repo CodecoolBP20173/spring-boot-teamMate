@@ -10,6 +10,7 @@ public class Answer {
     @Id
     @GeneratedValue
     private int id;
+    @Column(columnDefinition = "text")
     private String description;
     @ManyToOne
     private Customer customer;
