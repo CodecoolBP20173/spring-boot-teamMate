@@ -3,17 +3,14 @@ package com.codecool.teammate.controller;
 
 import com.codecool.teammate.model.Answer;
 import com.codecool.teammate.model.Question;
-import com.codecool.teammate.model.Topic;
-import com.codecool.teammate.repository.AnswerRepository;
+import com.codecool.teammate.model.Review;
 import com.codecool.teammate.repository.QuestionRepository;
-import com.codecool.teammate.repository.TopicRepository;
+import com.codecool.teammate.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,6 +19,9 @@ public class QuestionController {
 
     @Autowired
     private QuestionRepository questionRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @GetMapping("/questions/{id}")
     public String question(
@@ -36,8 +36,13 @@ public class QuestionController {
 
             if (question != null) {
                 modelMap.addAttribute("question", question);
-                if (question.getAnswer() != null) {
-                    modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
+
+                Answer answer = question.getAnswer();
+                modelMap.addAttribute("answer", answer);
+
+                if (answer != null) {
+                    List<Review> reviews = reviewRepository.findAllByAnswerId(answer.getId());
+                    modelMap.addAttribute("reviews", reviews);
                 }
 
                 return "question";
@@ -59,11 +64,16 @@ public class QuestionController {
 
             if (question != null) {
                 modelMap.addAttribute("question", question);
-                if (question.getAnswer() != null) {
-                    modelMap.addAttribute("answer_description", question.getAnswer().getDescription());
-                }
 
-                return "edit_question";
+                Answer answer = question.getAnswer();
+                String answer_description = "";
+
+                if (answer != null) {
+                    answer_description = answer.getDescription();
+                }
+                modelMap.addAttribute("answer_description", answer_description);
+
+                return "edit_answer";
             }
         }
         return "redirect:/topics";
