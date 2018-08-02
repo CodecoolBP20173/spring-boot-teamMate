@@ -11,7 +11,7 @@ public class Vote {
     private Answer answer;
     @OneToOne
     private Customer customer;
-
+    @Enumerated(EnumType.STRING)
     private VoteType voteType;
 
     public Vote() {

@@ -7,10 +7,12 @@ import com.codecool.teammate.model.VoteType;
 import com.codecool.teammate.repository.QuestionRepository;
 import com.codecool.teammate.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+@Controller
 public class VoteController {
     @Autowired
     private VoteRepository voteRepository;
@@ -36,10 +38,12 @@ public class VoteController {
 
                 if (answer != null) {
                     Vote vote = new Vote(answer);
-                    if (typeStr.toUpperCase().equals(VoteType.UP.name())) {
+                    if (typeStr.toUpperCase().equals(VoteType.UP.toString())) {
                         vote.setVoteType(VoteType.UP);
-                    } else if (typeStr.toUpperCase().equals(VoteType.DOWN.name())) {
+                        voteRepository.save(vote);
+                    } else if (typeStr.toUpperCase().equals(VoteType.DOWN.toString())) {
                         vote.setVoteType(VoteType.DOWN);
+                        voteRepository.save(vote);
                     }
                     return "redirect:/questions/{id}";
                 }
